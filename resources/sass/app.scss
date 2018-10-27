@@ -1,0 +1,53 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import url("theme/bootstrap4-bubblegum.min.css");
+
+* {
+    outline: none;
+}
+
+// @import '~bootstrap/scss/bootstrap';
+footer {
+    color: #636b6f;
+}
+
+.logo-color {
+    fill: #2c5fb8;
+}
+
+body {
+    background-color: #8e8c84;
+
+    // Logo
+    .navbar-brand {
+        display: flex;
+        font-family: 'Nunito', sans-serif;
+        align-items: center;
+
+        svg {
+            margin-right: .75em;
+        }
+    }
+}
+
+.wizard {
+    .title {
+        font-family: 'Nunito', sans-serif;
+        color: #4a4a4a;
+    }
+    .avatar-form {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+
+        .user-avatar {
+            height: 150px;
+            border-radius: 50%;
+        }
+    }
+}

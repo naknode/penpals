@@ -1,0 +1,47 @@
+@import "app.scss";
+html,
+body {
+    background-color: #fff;
+    color: #636b6f;
+    font-family: 'Nunito', sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+* {
+    outline: none;
+}
+
+.hero-bg {
+    background: #00d2ff;
+    background: -webkit-linear-gradient(to top, #3a7bd5, #00d2ff);
+    background: linear-gradient(to top, #3a7bd5, #00d2ff);
+    height: 80vh;
+    font-weight: 900;
+    background-position: center center;
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+    }
+}
+
+div.features {
+    $primary: #4b5154;
+
+    h2 {
+        font-weight: 700;
+        color: $primary;
+        display: flex;
+        align-items: center;
+        font-family: 'Open Sans Condensed', sans-serif;
+
+        svg.homepage-icon {
+            margin-right: .5em;
+            fill: darken($primary, 10%);
+        }
+    }
+
+    p {
+        text-align: justify;
+        color: lighten($primary, 15%);
+    }
+}
