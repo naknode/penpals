@@ -107,7 +107,7 @@ class UserController extends Controller
     {
         request()->validate([
             'biography' => ['required'],
-            'languages' => ['required']
+            'languages' => ['required'],
         ]);
 
         auth()->user()->update([
@@ -116,8 +116,12 @@ class UserController extends Controller
 
         $languages = request('languages');
 
-        foreach ($languages as $key => $language) {
-            auth()->user()->addLanguage($language['language'], $language['level'], $language['type']);
+        foreach ($languages['learning-language'] as $key => $language) {
+            auth()->user()->addLanguage($language, $languages['learning-fluency'][$key], 'learning');
+        }
+
+        foreach ($languages['speaks-language'] as $key => $language) {
+            auth()->user()->addLanguage($language, $languages['learning-fluency'][$key], 'speaks');
         }
 
         return redirect(route('view.dashboard'))->with(['message' => __('validation.wizard.success.biography')]);

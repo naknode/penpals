@@ -4,8 +4,6 @@
 <div class="container wizard">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-            <h1 class="mb-3 title">Let's start your profile.</h1>
             <registration-wizard :step="3"></registration-wizard>
 
             @if (session('message'))
@@ -34,7 +32,13 @@
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <wizard-add-language></wizard-add-language>
+                                <wizard-add-language type="learning" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <wizard-add-language type="speaks" />
                             </div>
                         </div>
 

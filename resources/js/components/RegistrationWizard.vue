@@ -41,7 +41,7 @@ export default {
   justify-content: space-between;
   width: 100%;
   position: relative;
-  margin: 40px 0;
+  margin: 1em 0;
 
   &:after {
     content: "";

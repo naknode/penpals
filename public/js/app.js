@@ -47689,7 +47689,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.form-steps[data-v-083119a2] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  position: relative;\n  margin: 40px 0;\n}\n.form-steps[data-v-083119a2]:after {\n    content: \"\";\n    display: table;\n    clear: both;\n}\n.form-steps__item[data-v-083119a2] {\n    padding: 0;\n    position: relative;\n    display: block;\n    float: left;\n    width: 100%;\n    text-align: center;\n}\n.form-steps__item-content[data-v-083119a2] {\n    display: inline-block;\n}\n.form-steps__item-icon[data-v-083119a2] {\n    background: #eceff1;\n    color: #8191ab;\n    display: block;\n    border-radius: 100%;\n    text-align: center;\n    width: 25px;\n    height: 25px;\n    line-height: 25px;\n    margin: 0 auto 10px auto;\n    position: relative;\n    font-size: 13px;\n    font-weight: 700;\n    z-index: 2;\n}\n.form-steps__item-text[data-v-083119a2] {\n    font-size: 13px;\n    color: #8191ab;\n    font-weight: 500;\n}\n.form-steps__item-line[data-v-083119a2] {\n    display: inline-block;\n    height: 3px;\n    width: 100%;\n    background: #cfd8dc;\n    position: absolute;\n    left: -50%;\n    top: 12px;\n    z-index: 1;\n}\n.form-steps__item--active .form-steps__item-icon[data-v-083119a2] {\n    background: #00aeef;\n    color: #ffffff;\n}\n.form-steps__item--active .form-steps__item-text[data-v-083119a2] {\n    color: #4f5e77;\n}\n.form-steps__item--active .form-steps__item-line[data-v-083119a2] {\n    background: #00aeef;\n}\n.form-steps__item--completed .form-steps__item-text[data-v-083119a2] {\n    color: #4f5e77;\n}\n.form-steps__item--completed .form-steps__item-icon[data-v-083119a2] {\n    background: #00aeef;\n    background-image: url(data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDkuMTIgNyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuMTIgMS4wNkw4LjA2IDAgMy4xOCA0Ljg4IDEuMDYgMi43NiAwIDMuODIgMy4xOCA3bDUuOTQtNS45NHoiLz48L3N2Zz4=);\n    color: transparent;\n    background-size: 10px;\n    background-repeat: no-repeat;\n    background-position: center center;\n    width: 25px;\n    height: 25px;\n    line-height: 25px;\n}\n.form-steps__item--completed .form-steps__item-line[data-v-083119a2] {\n    background: #00aeef;\n}\n", ""]);
+exports.push([module.i, "\n.form-steps[data-v-083119a2] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  width: 100%;\n  position: relative;\n  margin: 1em 0;\n}\n.form-steps[data-v-083119a2]:after {\n  content: \"\";\n  display: table;\n  clear: both;\n}\n.form-steps__item[data-v-083119a2] {\n  padding: 0;\n  position: relative;\n  display: block;\n  float: left;\n  width: 100%;\n  text-align: center;\n}\n.form-steps__item-content[data-v-083119a2] {\n  display: inline-block;\n}\n.form-steps__item-icon[data-v-083119a2] {\n  background: #eceff1;\n  color: #8191ab;\n  display: block;\n  border-radius: 100%;\n  text-align: center;\n  width: 25px;\n  height: 25px;\n  line-height: 25px;\n  margin: 0 auto 10px auto;\n  position: relative;\n  font-size: 13px;\n  font-weight: 700;\n  z-index: 2;\n}\n.form-steps__item-text[data-v-083119a2] {\n  font-size: 13px;\n  color: #8191ab;\n  font-weight: 500;\n}\n.form-steps__item-line[data-v-083119a2] {\n  display: inline-block;\n  height: 3px;\n  width: 100%;\n  background: #cfd8dc;\n  position: absolute;\n  left: -50%;\n  top: 12px;\n  z-index: 1;\n}\n.form-steps__item--active .form-steps__item-icon[data-v-083119a2] {\n  background: #00aeef;\n  color: #fff;\n}\n.form-steps__item--active .form-steps__item-text[data-v-083119a2] {\n  color: #4f5e77;\n}\n.form-steps__item--active .form-steps__item-line[data-v-083119a2] {\n  background: #00aeef;\n}\n.form-steps__item--completed .form-steps__item-text[data-v-083119a2] {\n  color: #4f5e77;\n}\n.form-steps__item--completed .form-steps__item-icon[data-v-083119a2] {\n  background: #00aeef;\n  background-image: url(data:image/svg+xml;base64,PHN2ZyBkYXRhLW5hbWU9IkxheWVyIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDkuMTIgNyI+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTkuMTIgMS4wNkw4LjA2IDAgMy4xOCA0Ljg4IDEuMDYgMi43NiAwIDMuODIgMy4xOCA3bDUuOTQtNS45NHoiLz48L3N2Zz4=);\n  color: transparent;\n  background-size: 10px;\n  background-repeat: no-repeat;\n  background-position: center center;\n  width: 25px;\n  height: 25px;\n  line-height: 25px;\n}\n.form-steps__item--completed .form-steps__item-line[data-v-083119a2] {\n  background: #00aeef;\n}\n", ""]);
 
 // exports
 
@@ -47893,7 +47893,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n", ""]);
 
 // exports
 
@@ -48021,7 +48021,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.hello[data-v-544efe7c] {\n  text-align: left;\n}\n.language[data-v-544efe7c] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.v-select[data-v-544efe7c] {\n  margin-right: 1em !important;\n  -webkit-box-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\nbutton[data-v-544efe7c] {\n  max-width: 50px;\n  font-weight: bold;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\nbutton.add[data-v-544efe7c] {\n    margin-right: 5px;\n}\n", ""]);
+exports.push([module.i, "\n.hello[data-v-544efe7c] {\n  text-align: left;\n}\n.language[data-v-544efe7c] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n}\n.v-select[data-v-544efe7c] {\n  margin-right: 1em !important;\n  -webkit-box-flex: 3;\n      -ms-flex: 3;\n          flex: 3;\n}\nbutton[data-v-544efe7c] {\n  font-weight: bold;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n}\nbutton.add[data-v-544efe7c] {\n  margin-right: 5px;\n}\n", ""]);
 
 // exports
 
@@ -48066,8 +48066,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['type'],
   methods: {
     addNew: function addNew(type) {
       var block = {
@@ -48092,10 +48095,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      type: ['learning', 'knows'],
-      knows: [{ language: 'English', level: 'fluent' }],
+      languageType: this.type,
+      knows: [{ language: 'English', level: '' }],
       learning: [],
-      levels: ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+      levels: {
+        'know': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+        'learning': ['beginner', 'conversational', 'working fluency', 'professional fluency', 'fluent']
+      },
       languages: ['Afrikanns', 'Albanian', 'Arabic', 'Armenian', 'Basque', 'Bengali', 'Bulgarian', 'Catalan', 'Cambodian', 'Chinese', 'Croation', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Fiji', 'Finnish', 'French', 'Georgian', 'German', 'Greek', 'Gujarati', 'Hebrew', 'Hindi', 'Hungarian', 'Icelandic', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Javanese', 'Korean', 'Latin', 'Latvian', 'Lithuanian', 'Macedonian', 'Malay', 'Malayalam', 'Maltese', 'Maori', 'Marathi', 'Mongolian', 'Nepali', 'Norwegian', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua', 'Romanian', 'Russian', 'Samoan', 'Serbian', 'Slovak', 'Slovenian', 'Spanish', 'Swahili', 'Swedish', 'Tamil', 'Tatar', 'Telugu', 'Thai', 'Tibetan', 'Tonga', 'Turkish', 'Ukranian', 'Urdu', 'Uzbek', 'Vietnamese', 'Welsh', 'Xhosa']
     };
   }
@@ -48113,11 +48119,17 @@ var render = function() {
     "div",
     { staticClass: "hello" },
     [
-      _c("h3", [_vm._v("I know these languages:")]),
+      _c("h3", { staticClass: "mb-2 title" }, [
+        _vm._v(
+          "I " +
+            _vm._s(_vm.type === "learning" ? "am learning" : "know") +
+            " these languages:"
+        )
+      ]),
       _vm._v(" "),
       _vm._l(_vm.knows, function(k, i) {
         return _c("div", { key: i }, [
-          _c("div", { staticClass: "language" }, [
+          _c("div", { staticClass: "language mb-2" }, [
             _c(
               "select",
               {
@@ -48129,8 +48141,11 @@ var render = function() {
                     expression: "knows[i].language"
                   }
                 ],
-                staticClass: "el form-control",
-                attrs: { label: "countryName" },
+                staticClass: "el form-control mr-2",
+                attrs: {
+                  name: _vm.type + "-language[" + i + "]",
+                  label: "countryName"
+                },
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter
@@ -48176,8 +48191,12 @@ var render = function() {
                     expression: "knows[i].level"
                   }
                 ],
-                staticClass: "el form-control",
-                attrs: { placeholder: "Fluency Level", label: "countryName" },
+                staticClass: "el form-control mr-2",
+                attrs: {
+                  name: _vm.type + "-fluency[" + i + "]",
+                  placeholder: "Fluency Level",
+                  label: "countryName"
+                },
                 on: {
                   change: function($event) {
                     var $$selectedVal = Array.prototype.filter
@@ -48196,7 +48215,7 @@ var render = function() {
                   }
                 }
               },
-              _vm._l(_vm.levels, function(level, i) {
+              _vm._l(_vm.levels[_vm.type], function(level, i) {
                 return _c("option", { key: i, domProps: { value: level } }, [
                   _vm._v("\n          " + _vm._s(level) + "\n        ")
                 ])
@@ -48204,32 +48223,32 @@ var render = function() {
             ),
             _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
                 staticClass: "el btn btn-secondary add",
                 on: {
                   click: function($event) {
+                    $event.preventDefault()
                     _vm.addNew("knows")
                   }
                 }
               },
-              [_c("lindua-icon", { attrs: { icon: "plus" } })],
-              1
+              [_vm._v("\n        ADD\n      ")]
             ),
             _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
                 staticClass: "el btn btn-danger del",
                 attrs: { disabled: i === 0 },
                 on: {
                   click: function($event) {
+                    $event.preventDefault()
                     _vm.remove(i, "knows")
                   }
                 }
               },
-              [_c("lindua-icon", { attrs: { icon: "trash" } })],
-              1
+              [_vm._v("\n        DEL\n      ")]
             )
           ])
         ])

@@ -1,11 +1,12 @@
 <template>
   <div class="hello">
-    <h3>I know these languages:</h3>
+    <h3 class="mb-2 title">I {{ type === 'learning' ? 'am learning' : 'know' }} these languages:</h3>
     <div v-for="(k, i) in knows" v-bind:key="i">
-      <div class="language">
+      <div class="language mb-2">
         <select
           v-model="knows[i].language"
-          class="el form-control"
+          :name="`${type}-language[${i}]`"
+          class="el form-control mr-2"
           label="countryName">
           <option value="">Select Language</option>
           <option v-for="(language, i) in languages" v-bind:key="i" v-bind:value="language">
@@ -14,19 +15,20 @@
         </select>
         <select
           v-model="knows[i].level"
-          class="el form-control"
+          :name="`${type}-fluency[${i}]`"
+          class="el form-control mr-2"
           placeholder="Fluency Level"
           label="countryName">
-          <option v-for="(level, i) in levels" v-bind:key="i" v-bind:value="level">
+          <option v-for="(level, i) in levels[type]" v-bind:key="i" v-bind:value="level">
             {{ level }}
           </option>
         </select>
-        <div @click="addNew('knows')" class="el btn btn-secondary add">
-          <lindua-icon icon="plus"></lindua-icon>
-        </div>
-        <div :disabled="i === 0" class="el btn btn-danger del" @click="remove(i, 'knows')">
-          <lindua-icon icon="trash"></lindua-icon>
-        </div>
+        <button @click.prevent="addNew('knows')" class="el btn btn-secondary add">
+          ADD
+        </button>
+        <button :disabled="i === 0" class="el btn btn-danger del" @click.prevent="remove(i, 'knows')">
+          DEL
+        </button>
       </div>
     </div>
   </div>
@@ -34,6 +36,7 @@
 
 <script>
 export default {
+  props: ['type'],
   methods: {
     addNew(type) {
       const block = {
@@ -58,10 +61,13 @@ export default {
   },
   data() {
     return {
-      type: ['learning', 'knows'],
-      knows: [{language: 'English', level: 'fluent'}],
+      languageType: this.type,
+      knows: [{language: 'English', level: ''}],
       learning: [],
-      levels: ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+      levels: {
+        'know': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+        'learning': ['beginner', 'conversational', 'working fluency', 'professional fluency', 'fluent'],
+      },
       languages: [
         'Afrikanns',
         'Albanian',
@@ -153,7 +159,6 @@ export default {
   flex: 3;
 }
 button {
-  max-width: 50px;
   font-weight: bold;
   flex: 1;
 
