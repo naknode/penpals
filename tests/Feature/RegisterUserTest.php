@@ -113,6 +113,8 @@ class RegisterUserTest extends TestCase
         $this->signIn();
 
         $myBio = 'I like long walks on the beach and candle-lit dinners.';
+        // TODO
+        // Change to own top level variable instead of wrapped around.
         $languages = [
             'learning-language' => [
                 'English',

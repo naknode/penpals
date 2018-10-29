@@ -65,7 +65,7 @@ export default {
       knows: [{language: 'English', level: ''}],
       learning: [],
       levels: {
-        'know': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+        'speaks': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
         'learning': ['beginner', 'conversational', 'working fluency', 'professional fluency', 'fluent'],
       },
       languages: [

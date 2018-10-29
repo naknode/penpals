@@ -48099,7 +48099,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       knows: [{ language: 'English', level: '' }],
       learning: [],
       levels: {
-        'know': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
+        'speaks': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
         'learning': ['beginner', 'conversational', 'working fluency', 'professional fluency', 'fluent']
       },
       languages: ['Afrikanns', 'Albanian', 'Arabic', 'Armenian', 'Basque', 'Bengali', 'Bulgarian', 'Catalan', 'Cambodian', 'Chinese', 'Croation', 'Czech', 'Danish', 'Dutch', 'English', 'Estonian', 'Fiji', 'Finnish', 'French', 'Georgian', 'German', 'Greek', 'Gujarati', 'Hebrew', 'Hindi', 'Hungarian', 'Icelandic', 'Indonesian', 'Irish', 'Italian', 'Japanese', 'Javanese', 'Korean', 'Latin', 'Latvian', 'Lithuanian', 'Macedonian', 'Malay', 'Malayalam', 'Maltese', 'Maori', 'Marathi', 'Mongolian', 'Nepali', 'Norwegian', 'Persian', 'Polish', 'Portuguese', 'Punjabi', 'Quechua', 'Romanian', 'Russian', 'Samoan', 'Serbian', 'Slovak', 'Slovenian', 'Spanish', 'Swahili', 'Swedish', 'Tamil', 'Tatar', 'Telugu', 'Thai', 'Tibetan', 'Tonga', 'Turkish', 'Ukranian', 'Urdu', 'Uzbek', 'Vietnamese', 'Welsh', 'Xhosa']
