@@ -23,6 +23,10 @@ npm run watch
 
 ### Step 2
 
+Open up the file `.env` (if not there, just copy `.env.example`) and fill it out accordingly -- MySQL, Redis, etc.
+
+### Step 3
+
 Next, boot up a server and visit your forum. If using a tool like Laravel Valet, of course the URL will default to `http://penpals.test`.
 
 1. Visit: `http://penpals.test/register` to register a new  account.
