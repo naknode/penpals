@@ -1,4 +1,4 @@
-# Penpals [![Build Status](https://travis-ci.org/naknode/penpals.svg?branch=master)](https://travis-ci.org/naknode/penpals)
+# Penpals [![Build Status](https://travis-ci.org/naknode/penpals.svg?branch=master)](https://travis-ci.org/naknode/penpals) [![codecov](https://codecov.io/gh/naknode/penpals/branch/master/graph/badge.svg)](https://codecov.io/gh/naknode/penpals)
 
 Penpal website the right way using Azure APIs from Microsoft to lessen harrassment and rude people while strengthening unity and friendships.
 
