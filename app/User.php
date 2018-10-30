@@ -119,11 +119,11 @@ class User extends Authenticatable
         return $this->hasMany(Languages::class);
     }
 
-    public function addLanguage($language, $level, $type)
+    public function addLanguage($language, $fluency, $type)
     {
         $added = Languages::create([
             'language' => $language,
-            'level' => $level,
+            'fluency' => $fluency,
             'type' => $type,
             'user_id' => $this->id
         ]);

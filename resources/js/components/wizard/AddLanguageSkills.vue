@@ -5,7 +5,7 @@
       <div class="language mb-2">
         <select
           v-model="knows[i].language"
-          :name="`${type}-language[${i}]`"
+          :name="`${type}_language[${i}]`"
           class="el form-control mr-2"
           label="countryName">
           <option value="">Select Language</option>
@@ -15,7 +15,7 @@
         </select>
         <select
           v-model="knows[i].level"
-          :name="`${type}-fluency[${i}]`"
+          :name="`${type}_fluency[${i}]`"
           class="el form-control mr-2"
           placeholder="Fluency Level"
           label="countryName">

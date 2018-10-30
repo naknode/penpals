@@ -48143,7 +48143,7 @@ var render = function() {
                 ],
                 staticClass: "el form-control mr-2",
                 attrs: {
-                  name: _vm.type + "-language[" + i + "]",
+                  name: _vm.type + "_language[" + i + "]",
                   label: "countryName"
                 },
                 on: {
@@ -48193,7 +48193,7 @@ var render = function() {
                 ],
                 staticClass: "el form-control mr-2",
                 attrs: {
-                  name: _vm.type + "-fluency[" + i + "]",
+                  name: _vm.type + "_fluency[" + i + "]",
                   placeholder: "Fluency Level",
                   label: "countryName"
                 },

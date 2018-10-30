@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 d-flex">
                                 <a href="{{ route('view.register.profile') }}" class="btn btn-link">Skip</a>
                                 <button type="submit" class="btn btn-primary rounded">
                                     This looks good. Here's my photo!

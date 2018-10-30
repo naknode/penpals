@@ -113,30 +113,28 @@ class RegisterUserTest extends TestCase
         $this->signIn();
 
         $myBio = 'I like long walks on the beach and candle-lit dinners.';
-        // TODO
-        // Change to own top level variable instead of wrapped around.
-        $languages = [
-            'learning-language' => [
-                'English',
-            ],
-            'learning-fluency' => [
-                'fluent'
-            ],
-            'speaks-language' => [
-                'Spanish',
-            ],
-            'speaks-fluency' => [
-                'native'
-            ]
-        ];
+        $learning_language = ['English'];
+        $learning_fluency = ['fluent'];
+        $speaks_language = ['fluent'];
+        $speaks_fluency = ['native'];
 
         $response = $this->json('POST', route('post.register.profile', auth()->id()), [
             'biography' => $myBio,
-            'languages' => $languages
+            'learning_language' => $learning_language,
+            'learning_fluency' => $learning_fluency,
+            'speaks_language' => $speaks_language,
+            'speaks_fluency' => $speaks_fluency
         ])->assertStatus(302);
 
+        $language = [
+            'language' => $learning_language[0],
+            'fluency' => $learning_fluency[0],
+            'type' => 'learning',
+            'user_id' => auth()->id()
+        ];
+
         $this->assertEquals(auth()->user()->fresh()->biography, $myBio);
-        // $this->assertDatabaseHas('languages', $languages[0]);
+        $this->assertDatabaseHas('languages', $language);
         $this->assertEquals(2, auth()->user()->fresh()->languages->count());
         $response->assertRedirect(route('view.dashboard'))
                 ->assertSessionHas('message', __('validation.wizard.success.biography'));
