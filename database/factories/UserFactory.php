@@ -21,12 +21,12 @@ $factory->define(App\User::class, function ($faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-        'confirmed' => true
+        'confirmed' => true,
     ];
 });
 
 $factory->state(App\User::class, 'unconfirmed', function () {
     return [
-        'confirmed' => false
+        'confirmed' => false,
     ];
 });

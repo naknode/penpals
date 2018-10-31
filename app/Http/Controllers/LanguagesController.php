@@ -44,7 +44,7 @@ class LanguagesController extends Controller
         $language = Language::create([
             'user_id' => auth()->id(),
             'level' => request('level'),
-            'type' => request('type')
+            'type' => request('type'),
         ]);
 
         return $language;

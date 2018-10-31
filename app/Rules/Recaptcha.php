@@ -21,7 +21,7 @@ class Recaptcha implements Rule
         $rep = Zttp::asFormParams()->post(static::URL, [
             'secret' => config('services.recaptcha.secret'),
             'response' => $value,
-            'remoteip' => request()->ip()
+            'remoteip' => request()->ip(),
         ])->json();
 
         return $rep['success'];
@@ -47,7 +47,7 @@ class Recaptcha implements Rule
         return Zttp::asFormParams()->post(static::URL, [
             'secret' => config('services.recaptcha.secret'),
             'response' => 'test',
-            'remoteip' => request()->ip()
+            'remoteip' => request()->ip(),
         ])->json()['success'];
     }
 }

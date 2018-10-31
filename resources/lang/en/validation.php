@@ -95,8 +95,8 @@ return [
         'success' => [
             'robot' => 'Neato, you are not a robot! Beep! I mean, hey.',
             'photo' => 'Looking good there! Nice pic.',
-            'biography' => 'You are all done! Welcome. The site is yours!'
-        ]
+            'biography' => 'You are all done! Welcome. The site is yours!',
+        ],
     ],
 
     /*
@@ -128,6 +128,6 @@ return [
     */
 
     'attributes' => [
-        'g-recaptcha-response' => 'reCAPTCHA'
+        'g-recaptcha-response' => 'reCAPTCHA',
     ],
 ];

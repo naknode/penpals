@@ -74,7 +74,7 @@ class UserController extends Controller
     }
 
     /**
-     * Validate whether the user passed the human test
+     * Validate whether the user passed the human test.
      *
      * @param  \App\Rules\Recaptcha $recaptcha
      * @return \Illuminate\Http\Response
@@ -82,7 +82,7 @@ class UserController extends Controller
     public function tryBeingHuman(Request $request)
     {
         $response = $this->validate($request, [
-            'g-recaptcha-response' => ['required', new Recaptcha]
+            'g-recaptcha-response' => ['required', new Recaptcha],
         ]);
 
         auth()->user()->confirmHumanlyness();
@@ -91,16 +91,16 @@ class UserController extends Controller
     }
 
     /**
-     * Add the profile photo for the user
+     * Add the profile photo for the user.
      */
     public function wizardPhoto()
     {
         request()->validate([
-            'avatar' => ['required', 'image']
+            'avatar' => ['required', 'image'],
         ]);
 
         auth()->user()->update([
-            'avatar_path' => request()->file('avatar')->store('avatars', 'public')
+            'avatar_path' => request()->file('avatar')->store('avatars', 'public'),
         ]);
 
         return redirect(route('view.register.profile'))->with(['message' => __('validation.wizard.success.photo')]);
@@ -120,14 +120,14 @@ class UserController extends Controller
         ]);
 
         auth()->user()->update([
-            'biography' => request('biography')
+            'biography' => request('biography'),
         ]);
 
         $languages = [
             'learning_language' => request('learning_language'),
             'learning_fluency' => request('learning_fluency'),
             'speaks_language' => request('speaks_language'),
-            'speaks_fluency' => request('speaks_fluency')
+            'speaks_fluency' => request('speaks_fluency'),
         ];
 
         foreach ($languages['learning_language'] as $key => $language) {
@@ -160,13 +160,13 @@ class UserController extends Controller
     public function storeAvatar()
     {
         request()->validate([
-            'avatar' => ['required', 'image']
+            'avatar' => ['required', 'image'],
         ]);
 
         \Storage::disk('public')->delete(auth()->user()->getOriginal('avatar_path'));
 
         auth()->user()->update([
-            'avatar_path' => request()->file('avatar')->store('avatars', 'public')
+            'avatar_path' => request()->file('avatar')->store('avatars', 'public'),
         ]);
 
         return response([], 204);
