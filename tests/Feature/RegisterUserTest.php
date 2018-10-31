@@ -39,7 +39,7 @@ class RegisterUserTest extends TestCase
         $response = $this->json('POST', route('register'), [
             'username' => 'johndoe',
             'email' => 'johndoe@example.com',
-            'password' => 'secret'
+            'password' => 'secret',
         ]);
 
         $response->assertRedirect('/register/robot');
@@ -89,12 +89,12 @@ class RegisterUserTest extends TestCase
         Storage::fake('public');
 
         $this->json('POST', route('avatar', auth()->id()), [
-            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg')
+            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg'),
         ]);
 
-        $this->assertEquals(asset('avatars/' . $file->hashName()), auth()->user()->avatar_path);
+        $this->assertEquals(asset('avatars/'.$file->hashName()), auth()->user()->avatar_path);
 
-        Storage::disk('public')->assertExists('avatars/' . $file->hashName());
+        Storage::disk('public')->assertExists('avatars/'.$file->hashName());
     }
 
     /** @test */
@@ -103,7 +103,7 @@ class RegisterUserTest extends TestCase
         $this->withExceptionHandling()->signIn();
 
         $this->json('POST', route('avatar', auth()->id()), [
-            'avatar' => 'not-an-image'
+            'avatar' => 'not-an-image',
         ])->assertStatus(422);
     }
 
@@ -123,14 +123,14 @@ class RegisterUserTest extends TestCase
             'learning_language' => $learning_language,
             'learning_fluency' => $learning_fluency,
             'speaks_language' => $speaks_language,
-            'speaks_fluency' => $speaks_fluency
+            'speaks_fluency' => $speaks_fluency,
         ])->assertStatus(302);
 
         $language = [
             'language' => $learning_language[0],
             'fluency' => $learning_fluency[0],
             'type' => 'learning',
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
         ];
 
         $this->assertEquals(auth()->user()->fresh()->biography, $myBio);
@@ -145,7 +145,7 @@ class RegisterUserTest extends TestCase
         return array_merge([
             'username' => 'johndoe',
             'email' => 'johndoe@example.com',
-            'password' => 'secret'
+            'password' => 'secret',
         ], $overrides);
     }
 }

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'name', 'email', 'password', 'robot', 'avatar_path', 'biography'
+        'username', 'name', 'email', 'password', 'robot', 'avatar_path', 'biography',
     ];
 
     /**
@@ -33,7 +33,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'isAdmin'
+        'isAdmin',
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'confirmed' => 'boolean',
         'robot' => 'boolean',
-        'reputation' => 'integer'
+        'reputation' => 'integer',
     ];
 
     /**
@@ -103,7 +103,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Update that the user passed Google's reCaptcha simulation
+     * Update that the user passed Google's reCaptcha simulation.
      */
     public function confirmHumanlyness()
     {
@@ -112,7 +112,7 @@ class User extends Authenticatable
     }
 
     /**
-     * A user knows or speaks many languages
+     * A user knows or speaks many languages.
      */
     public function languages()
     {
@@ -125,7 +125,7 @@ class User extends Authenticatable
             'language' => $language,
             'fluency' => $fluency,
             'type' => $type,
-            'user_id' => $this->id
+            'user_id' => $this->id,
         ]);
 
         return $added;
