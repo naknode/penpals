@@ -89,7 +89,7 @@ class RegisterUserTest extends TestCase
         Storage::fake('public');
 
         $this->json('POST', route('avatar', auth()->id()), [
-            'avatar' => $file = UploadedFile::fake()->image('avatar.jpg'),
+            'avatar' => $file = UploadedFile::fake()->image('avatar.png'),
         ]);
 
         $this->assertEquals(asset('avatars/'.$file->hashName()), auth()->user()->avatar_path);
