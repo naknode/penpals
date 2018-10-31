@@ -5,6 +5,9 @@
 version: 2
 jobs:
   build:
+    script:
+      - docker-php-ext-install bcmath
+
     docker:
       # specify the version you desire here
       - image: circleci/php:7.1-cli
@@ -15,9 +18,6 @@ jobs:
       # - image: circleci/mysql:9.4
 
     working_directory: ~/repo
-
-    script:
-      - docker-php-ext-install bcmath
 
     steps:
       - checkout
