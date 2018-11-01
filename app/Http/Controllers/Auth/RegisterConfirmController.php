@@ -16,7 +16,7 @@ class RegisterConfirmController extends Controller
     {
         $user = User::where('confirmation_token', request('token'))->first();
 
-        if ( ! $user) {
+        if (! $user) {
             return redirect(route('view.dashboard'))->with('flash', 'Invalid token.');
         }
 
