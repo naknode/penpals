@@ -55,16 +55,6 @@ class RegisterUserTest extends TestCase
     }
 
     /** @test */
-    public function a_user_needs_to_confirm_their_humanlyness()
-    {
-        $this->withExceptionHandling()->signIn();
-
-        unset(app()[Recaptcha::class]);
-
-        $this->post('/register/robot', ['g-recaptcha-response' => 'test'])->assertSessionHasErrors();
-    }
-
-    /** @test */
     public function a_user_can_confirm_their_humanlyness()
     {
         $this->withExceptionHandling()->signIn();
