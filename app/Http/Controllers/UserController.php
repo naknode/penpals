@@ -16,9 +16,11 @@ class UserController extends Controller
      */
     public function tryBeingHuman(Request $request)
     {
-        $response = $this->validate($request, [
-            'g-recaptcha-response' => ['required', new Recaptcha],
-        ]);
+        if (getenv('APP_ENV') !== 'testing') {
+            $response = $this->validate($request, [
+                'g-recaptcha-response' => ['required', new Recaptcha],
+            ]);
+        }
 
         auth()->user()->confirmHumanlyness();
 

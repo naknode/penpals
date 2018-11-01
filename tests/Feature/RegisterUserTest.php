@@ -69,7 +69,7 @@ class RegisterUserTest extends TestCase
     {
         $this->withExceptionHandling()->signIn();
 
-        auth()->user()->confirmHumanlyness();
+        $this->post('/register/robot', ['g-recaptcha-response' => 'test'])->assertRedirect(route('view.register.photo'));
 
         $this->assertFalse(auth()->user()->fresh()->robot);
     }
