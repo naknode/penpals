@@ -36,18 +36,4 @@ class Recaptcha implements Rule
     {
         return 'The recaptcha verification failed. Try again.';
     }
-
-    /**
-     * Determine if Recaptcha's keys are set to test mode.
-     *
-     * @return bool
-     */
-    public static function isInTestMode()
-    {
-        return Zttp::asFormParams()->post(static::URL, [
-            'secret' => config('services.recaptcha.secret'),
-            'response' => 'test',
-            'remoteip' => request()->ip(),
-        ])->json()['success'];
-    }
 }
