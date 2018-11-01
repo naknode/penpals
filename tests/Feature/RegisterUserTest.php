@@ -82,6 +82,28 @@ class RegisterUserTest extends TestCase
     }
 
     /** @test */
+    public function a_user_can_fully_confirm_their_email_address()
+    {
+        $this->post(route('register'), $this->validParams([
+            'email' => 'john@doe.com',
+        ]));
+
+        $user = User::whereEmail('john@doe.com')->first();
+
+        $this->assertFalse($user->confirmed);
+        $this->assertTrue($user->robot);
+        $this->assertNotNull($user->confirmation_token);
+
+        $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
+            ->assertRedirect(route('view.dashboard'));
+
+        tap($user->fresh(), function ($user) {
+            $this->assertTrue($user->confirmed);
+            $this->assertNull($user->confirmation_token);
+        });
+    }
+
+    /** @test */
     public function a_user_can_upload_their_profile_photo()
     {
         $this->signIn();

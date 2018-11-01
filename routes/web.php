@@ -28,6 +28,9 @@ Route::post('/register/photo', 'UserController@wizardPhoto')->name('post.registe
 Route::view('/register/profile', 'layouts.wizard.profile')->middleware('auth')->name('view.register.profile');
 Route::post('/register/profile', 'UserController@wizardProfile')->name('post.register.profile');
 
+// Confirm
+Route::get('register/confirm', 'Auth\RegisterConfirmController@index')->name('register.confirm');
+
 // Dashboard
 Route::get('/dashboard', 'DashboardController@view')->name('view.dashboard');
 
