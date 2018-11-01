@@ -1,3 +1,7 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=047d69f1f32eaecc19e17904cf063e147935601e032ea2102b5a202d14f8dd19
+
 language: php
 
 php:
@@ -13,7 +17,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-    - vendor/bin/phpunit --coverage-clover=coverage.xml
+    - vendor/bin/phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml
 
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
