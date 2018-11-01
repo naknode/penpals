@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Profile;
 use Illuminate\Http\Request;
 
@@ -39,14 +40,20 @@ class ProfileController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the user's profile.
      *
-     * @param  \App\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @param  User $user
+     * @return \Response
      */
-    public function show(Profile $profile)
+    public function show(User $user)
     {
-        //
+        $data = ['profileUser' => $user];
+
+        if (request()->expectsJson()) {
+            return $data;
+        }
+
+        return view('profiles.show', $data);
     }
 
     /**

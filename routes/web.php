@@ -33,3 +33,5 @@ Route::get('/dashboard', 'DashboardController@view')->name('view.dashboard');
 
 // Profile
 Route::post('/api/{user}/avatar', 'UserController@storeAvatar')->middleware('auth')->name('avatar');
+
+Route::get('/{user}', 'ProfileController@show')->name('view.profile');
