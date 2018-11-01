@@ -1,4 +1,4 @@
-# Penpals [![Build Status](https://travis-ci.org/naknode/penpals.svg?branch=master)](https://travis-ci.org/naknode/penpals) [![codecov](https://codecov.io/gh/naknode/penpals/branch/master/graph/badge.svg)](https://codecov.io/gh/naknode/penpals) [![StyleCI](https://github.styleci.io/repos/154928606/shield?branch=master)](https://github.styleci.io/repos/154928606)
+# Penpals [![Build Status](https://travis-ci.org/naknode/penpals.svg?branch=master)](https://travis-ci.org/naknode/penpals) [![codecov](https://codecov.io/gh/naknode/penpals/branch/master/graph/badge.svg)](https://codecov.io/gh/naknode/penpals) [![StyleCI](https://github.styleci.io/repos/154928606/shield?branch=master)](https://github.styleci.io/repos/154928606) [![CircleCI](https://circleci.com/gh/naknode/penpals/tree/master.svg?style=svg)](https://circleci.com/gh/naknode/penpals/tree/master)
 
 Penpal website the right way using Azure APIs from Microsoft to lessen harrassment and rude people while strengthening unity and friendships.
 
