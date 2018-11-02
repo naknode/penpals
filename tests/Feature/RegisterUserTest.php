@@ -34,7 +34,7 @@ class RegisterUserTest extends TestCase
     {
         $this->withoutExceptionHandling();
 
-        $response = $this->json('POST', route('register'), [
+        $response = $this->post(route('register'), [
             'username' => 'johndoe',
             'email' => 'johndoe@example.com',
             'password' => 'secret',
@@ -97,6 +97,25 @@ class RegisterUserTest extends TestCase
 
         $this->post(route('register'), $this->validParams());
         Mail::assertSent(ConfirmYourEmail::class);
+    }
+
+    /** @test */
+    public function a_user_cannot_validate_their_email_address_with_invalid_token()
+    {
+        $this->signIn();
+
+        $this->assertFalse(auth()->user()->confirmed);
+        $this->assertNotNull(auth()->user()->confirmation_token);
+
+        $this->get(route('register.confirm', ['token' => 'invalid-token']))
+            ->assertRedirect(route('view.dashboard'))
+            ->assertStatus(302)
+            ->assertSessionHas([
+            'flash' => 'Invalid token.',
+        ]);
+
+        $this->assertFalse(auth()->user()->confirmed);
+        $this->assertNotNull(auth()->user()->confirmation_token);
     }
 
     /** @test */

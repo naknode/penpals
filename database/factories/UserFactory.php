@@ -21,7 +21,8 @@ $factory->define(App\User::class, function ($faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-        'confirmed' => true,
+        'confirmed' => false,
+        'confirmation_token' => str_limit(md5($faker->unique()->safeEmail.str_random()), 25, ''),
     ];
 });
 
