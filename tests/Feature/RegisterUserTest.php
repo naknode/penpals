@@ -67,7 +67,9 @@ class RegisterUserTest extends TestCase
     {
         $this->withExceptionHandling()->signIn();
 
-        $this->postJson(route('post.register.robot'), ['g-recaptcha-response' => 'test'])->json();
+        $this->post(route('post.register.robot'), ['g-recaptcha-response' => 'test'])
+            ->assertRedirect(route('view.register.photo'))
+            ->assertSessionHas('message', __('validation.wizard.success.robot'));
 
         $this->assertFalse(auth()->user()->fresh()->robot);
     }
