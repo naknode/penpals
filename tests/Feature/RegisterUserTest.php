@@ -53,6 +53,22 @@ class RegisterUserTest extends TestCase
     }
 
     /** @test */
+    public function a_user_may_add_an_avatar_during_registration()
+    {
+        $this->signIn();
+
+        Storage::fake('public');
+
+        $this->json('POST', route('post.register.photo', auth()->id()), [
+          'avatar' => $file = UploadedFile::fake()->image('avatar.png'),
+        ]);
+
+        $this->assertEquals(asset('avatars/'.$file->hashName()), auth()->user()->avatar_path);
+
+        Storage::disk('public')->assertExists('avatars/'.$file->hashName());
+    }
+
+    /** @test */
     public function a_user_needs_to_confirm_their_humanlyness()
     {
         $this->withExceptionHandling()->signIn();
