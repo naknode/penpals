@@ -14,15 +14,17 @@ class UserController extends Controller
      * @param  \App\Rules\Recaptcha $recaptcha
      * @return \Illuminate\Http\Response
      */
-    public function tryBeingHuman(Request $request)
+    public function tryBeingHuman(Recaptcha $recaptcha)
     {
-        if (getenv('APP_ENV') !== 'testing') {
-            $response = $this->validate($request, [
-                'g-recaptcha-response' => ['required', new Recaptcha],
-            ]);
-        }
+        request()->validate([
+            'g-recaptcha-response' => ['required', $recaptcha],
+        ]);
 
         auth()->user()->confirmHumanlyness();
+
+        if (request()->wantsJson()) {
+            return response(auth()->user()->fresh(), 201);
+        }
 
         return redirect(route('view.register.photo'))->with(['message' => __('validation.wizard.success.robot')]);
     }

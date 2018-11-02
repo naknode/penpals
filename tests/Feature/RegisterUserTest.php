@@ -27,8 +27,6 @@ class RegisterUserTest extends TestCase
                 $m->shouldReceive('passes')->andReturn(true);
             });
         });
-
-        Mail::fake();
     }
 
     /** @test */
@@ -55,11 +53,21 @@ class RegisterUserTest extends TestCase
     }
 
     /** @test */
+    public function a_user_needs_to_confirm_their_humanlyness()
+    {
+        $this->withExceptionHandling()->signIn();
+
+        unset(app()[Recaptcha::class]);
+
+        $this->post('/register/robot', ['g-recaptcha-response' => 'test'])->assertSessionHasErrors();
+    }
+
+    /** @test */
     public function a_user_can_confirm_their_humanlyness()
     {
         $this->withExceptionHandling()->signIn();
 
-        $this->post('/register/robot', ['g-recaptcha-response' => 'test'])->assertRedirect(route('view.register.photo'));
+        $this->postJson(route('post.register.robot'), ['g-recaptcha-response' => 'test'])->json();
 
         $this->assertFalse(auth()->user()->fresh()->robot);
     }
@@ -67,6 +75,8 @@ class RegisterUserTest extends TestCase
     /** @test */
     public function a_confirmation_email_is_sent_upon_registration()
     {
+        Mail::fake();
+
         $this->post(route('register'), $this->validParams());
         Mail::assertSent(ConfirmYourEmail::class);
     }
