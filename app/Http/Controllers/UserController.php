@@ -22,10 +22,6 @@ class UserController extends Controller
 
         auth()->user()->confirmHumanlyness();
 
-        if (request()->wantsJson()) {
-            return response(auth()->user()->fresh(), 201);
-        }
-
         return redirect(route('view.register.photo'))->with(['message' => __('validation.wizard.success.robot')]);
     }
 
