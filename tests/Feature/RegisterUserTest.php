@@ -27,6 +27,8 @@ class RegisterUserTest extends TestCase
                 $m->shouldReceive('passes')->andReturn(true);
             });
         });
+
+        Mail::fake();
     }
 
     /** @test */
@@ -93,8 +95,6 @@ class RegisterUserTest extends TestCase
     /** @test */
     public function a_confirmation_email_is_sent_upon_registration()
     {
-        Mail::fake();
-
         $this->post(route('register'), $this->validParams());
         Mail::assertSent(ConfirmYourEmail::class);
     }
