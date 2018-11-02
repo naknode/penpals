@@ -121,12 +121,6 @@ class User extends Authenticatable
 
     public function addLanguage($language, $fluency, $type)
     {
-        request()->validate([
-            'level' => 'required',
-            'type' => 'required|in:learning,speaks',
-            'user_id' => 'required',
-        ]);
-
         $added = Languages::create([
             'language' => $language,
             'fluency' => $fluency,
