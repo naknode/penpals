@@ -10,6 +10,19 @@ class User extends Authenticatable
     use Notifiable;
 
     /**
+     * Boot the model.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function ($user) {
+            Profile::create([
+                'user_id' => $user->id,
+            ]);
+        });
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -117,5 +130,15 @@ class User extends Authenticatable
     public function languages()
     {
         return $this->hasMany(Languages::class);
+    }
+
+    /**
+     * A user has a profile
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

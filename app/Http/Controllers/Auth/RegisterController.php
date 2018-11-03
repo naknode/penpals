@@ -84,6 +84,7 @@ class RegisterController extends Controller
     protected function registered($request, $user)
     {
         Mail::to($user)->send(new ConfirmYourEmail($user));
+
         \Session::flash('message', __('validation.wizard.registered'));
     }
 }

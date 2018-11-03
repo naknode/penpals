@@ -27,7 +27,7 @@ class Profile extends Model
      */
     public function path()
     {
-        return "/{$this->username}";
+        return "/{$this->user->username}";
     }
 
     /**
@@ -43,7 +43,7 @@ class Profile extends Model
     }
 
     /**
-     * A thread belongs to a creator.
+     * A profile belongs to a creator.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

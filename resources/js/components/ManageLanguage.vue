@@ -121,8 +121,8 @@ export default {
     return {
       languageType: this.type,
       data: {
-        speaks: [{language_name: 'English', fluency: ''}],
-        learning: [{language_name: 'English', fluency: ''}],
+        speaks: [{language_name: '', fluency: ''}],
+        learning: [{language_name: '', fluency: ''}],
       },
       levels: {
         'speaks': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
