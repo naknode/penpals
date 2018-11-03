@@ -18,4 +18,13 @@ class DashboardTest extends TestCase
             ->assertStatus(200)
             ->assertSee('Welcome');
     }
+
+    /** @test */
+    public function a_guest_cannot_see_a_dashboard()
+    {
+        $this->withExceptionHandling()
+            ->get(route('view.dashboard'))
+            ->assertStatus(302)
+            ->assertRedirect('login');
+    }
 }
