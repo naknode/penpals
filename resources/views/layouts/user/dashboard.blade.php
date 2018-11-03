@@ -8,6 +8,6 @@
   </div>
   @endif
 
-  <div>Hello</div>
+  <div>Welcome.</div>
 
 @endsection
