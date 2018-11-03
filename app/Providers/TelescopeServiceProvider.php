@@ -10,6 +10,7 @@ use Laravel\Telescope\TelescopeApplicationServiceProvider;
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
     /**
+     * @codeCoverageIgnore
      * Register any application services.
      *
      * @return void
@@ -31,6 +32,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     }
 
     /**
+     * @codeCoverageIgnore
      * Register the Telescope gate.
      *
      * This gate determines who can access Telescope in non-local environments.

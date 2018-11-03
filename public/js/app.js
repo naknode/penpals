@@ -48587,7 +48587,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var data = e.data.map(function (d) {
         return {
           id: d.id,
-          language_name: d.language,
+          language_name: d.language_name,
           fluency: d.fluency
         };
       });
@@ -48654,9 +48654,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.data[this.type].push(block);
     },
     remove: function remove(index, type) {
+      var _this3 = this;
+
       if (index === 0) return;
 
-      this.data[this.type].splice(index, 1);
+      if (this.data[this.type][index].id) {
+        axios.delete('/language/' + this.data[this.type][index].id + '/destroy', {
+          id: this.data[this.type][index].id
+        }).then(function (e) {
+          if (e.status === 200) {
+            _this3.data[_this3.type].splice(index, 1);
+          }
+        }).catch(function (error) {
+          if (error.response.status === 403) {
+            _this3.$awn.alert(error.response.data.message);
+          }
+        });
+      } else {
+        this.data[this.type].splice(index, 1);
+      }
     }
   },
   data: function data() {

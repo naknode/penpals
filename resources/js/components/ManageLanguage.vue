@@ -44,7 +44,7 @@ export default {
         const data = e.data.map(d => {
           return {
             id: d.id,
-            language_name: d.language,
+            language_name: d.language_name,
             fluency: d.fluency
           }
         });
@@ -99,9 +99,6 @@ export default {
           });
         }
       }
-
-
-
     },
     addNew(type) {
       const block = {
@@ -114,7 +111,23 @@ export default {
     remove(index, type) {
       if (index === 0) return;
 
-      this.data[this.type].splice(index, 1);
+      if (this.data[this.type][index].id) {
+          axios.delete('/language/' + this.data[this.type][index].id + '/destroy', {
+            id: this.data[this.type][index].id,
+          })
+          .then(e => {
+            if (e.status === 200) {
+              this.data[this.type].splice(index, 1);
+            }
+          })
+          .catch(error => {
+            if (error.response.status === 403) {
+              this.$awn.alert(error.response.data.message);
+            }
+          });
+        } else {
+          this.data[this.type].splice(index, 1);
+        }
     },
   },
   data() {
