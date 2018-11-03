@@ -11,17 +11,6 @@ class LanguagesPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can create languages.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
-    {
-        return $user->robot === false;
-    }
-
-    /**
      * Determine whether the user can update the languages.
      *
      * @param  \App\User  $user
@@ -43,17 +32,5 @@ class LanguagesPolicy
     public function delete(User $user, Languages $languages)
     {
         //
-    }
-
-    /**
-     * Determine whether the user can view the myModel.
-     *
-     * @param  \App\User  $user
-     * @param  \App\myModel  $myModel
-     * @return mixed
-     */
-    public function view(User $user, MyModel $myModel)
-    {
-        dd("I'm being called...");
     }
 }
