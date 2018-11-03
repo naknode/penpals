@@ -133,7 +133,7 @@ class User extends Authenticatable
     }
 
     /**
-     * A user has a profile
+     * A user has a profile.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
