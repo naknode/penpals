@@ -31,6 +31,6 @@ class LanguagesPolicy
      */
     public function delete(User $user, Languages $languages)
     {
-        //
+        return $user->id === $languages->user->id;
     }
 }

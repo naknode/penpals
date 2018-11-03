@@ -19,7 +19,7 @@ class LanguagesController extends Controller
 
     public function destroy(Languages $languages)
     {
-        $this->authorize('update', $languages);
+        $this->authorize('delete', $languages);
 
         $languages->delete();
 
