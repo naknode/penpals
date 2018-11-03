@@ -35,10 +35,6 @@ class Profile extends Model
      */
     public function getPathAttribute()
     {
-        if (! $this->user) {
-            return '';
-        }
-
         return $this->path();
     }
 
