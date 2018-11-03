@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Languages;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 
@@ -75,5 +76,10 @@ class UserController extends Controller
         ]);
 
         return response([], 204);
+    }
+
+    public function languages(User $user, $type)
+    {
+        return Languages::where('type', $type)->where('user_id', $user->id)->get();
     }
 }

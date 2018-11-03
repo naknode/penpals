@@ -48538,6 +48538,8 @@ exports.push([module.i, "\n.hello[data-v-2e14d6f0] {\n  text-align: left;\n}\n.l
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -48578,55 +48580,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['type'],
+  created: function created() {
+    var _this = this;
+
+    axios.get(route('languages.user.get', { user: window.App.user.username, type: this.type })).then(function (e) {
+      var data = e.data.map(function (d) {
+        return {
+          id: d.id,
+          language_name: d.language,
+          fluency: d.fluency
+        };
+      });
+
+      if (data.length) {
+        _this.data[_this.type] = data;
+      }
+    });
+  },
+
   methods: {
-    updateLang: function updateLang(data) {
-      var _this = this;
+    /**
+     * Update the language
+     */
+    updateLang: function updateLang(data, index) {
+      var _this2 = this;
 
-      var language = data.language,
-          fluency = data.fluency;
+      var language_name = data.language_name,
+          fluency = data.fluency,
+          id = data.id;
 
 
-      if (fluency !== "") {
-        axios.post('/language/add', {
-          language: language,
+      if (id) {
+        axios.post('/language/ ' + id + '/update', {
+          language_name: language_name,
           fluency: fluency,
-          type: 'speaks',
+          type: this.type,
+          id: id,
           user_id: window.App.user.id
         }).then(function (e) {
-          console.log(e.status);
+          if (e.status === 200) {
+            _this2.$awn.success('Successfully updated.');
+          }
         }).catch(function (error) {
           if (error.response.status === 403) {
-            _this.$awn.alert(error.response.data.message);
+            _this2.$awn.alert(error.response.data.message);
           }
         });
+      } else {
+        if (fluency !== "" && language_name !== "") {
+          axios.post('/language/add', {
+            language_name: language_name,
+            fluency: fluency,
+            type: this.type,
+            user_id: window.App.user.id
+          }).then(function (e) {
+            if (e.status === 200) {
+              _this2.data[_this2.type][index] = _extends({}, _this2.data[_this2.type][index], { id: e.data });
+            }
+          }).catch(function (error) {
+            if (error.response.status === 403) {
+              _this2.$awn.alert(error.response.data.message);
+            }
+          });
+        }
       }
     },
     addNew: function addNew(type) {
       var block = {
-        language: '',
+        language_name: '',
         fluency: ''
       };
-      if (type === 'knows') {
-        this.knows.push(block);
-      } else {
-        this.learning.push(block);
-      }
+
+      this.data[this.type].push(block);
     },
     remove: function remove(index, type) {
       if (index === 0) return;
 
-      if (type === 'knows') {
-        this.knows.splice(index, 1);
-      } else {
-        this.learning.splice(index, 1);
-      }
+      this.data[this.type].splice(index, 1);
     }
   },
   data: function data() {
     return {
       languageType: this.type,
-      knows: [{ language: 'English', fluency: '' }],
-      learning: [],
+      data: {
+        speaks: [{ language_name: 'English', fluency: '' }],
+        learning: [{ language_name: 'English', fluency: '' }]
+      },
       levels: {
         'speaks': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
         'learning': ['beginner', 'conversational', 'working fluency', 'professional fluency', 'fluent']
@@ -48656,7 +48695,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.knows, function(k, i) {
+      _vm._l(_vm.data[_vm.type], function(k, i) {
         return _c("div", { key: i }, [
           _c("div", { staticClass: "language mb-2" }, [
             _c(
@@ -48666,8 +48705,8 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.knows[i].language,
-                    expression: "knows[i].language"
+                    value: _vm.data[_vm.type][i].language_name,
+                    expression: "data[type][i].language_name"
                   }
                 ],
                 staticClass: "el form-control mr-2",
@@ -48686,8 +48725,8 @@ var render = function() {
                         return val
                       })
                     _vm.$set(
-                      _vm.knows[i],
-                      "language",
+                      _vm.data[_vm.type][i],
+                      "language_name",
                       $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                     )
                   }
@@ -48716,33 +48755,39 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.knows[i].fluency,
-                    expression: "knows[i].fluency"
+                    value: _vm.data[_vm.type][i].fluency,
+                    expression: "data[type][i].fluency"
                   }
                 ],
                 staticClass: "el form-control mr-2",
                 attrs: {
                   name: _vm.type + "_fluency[" + i + "]",
-                  onChange: _vm.updateLang(_vm.knows[i]),
                   placeholder: "Fluency Level",
                   label: "countryName"
                 },
                 on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.knows[i],
-                      "fluency",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
+                  change: [
+                    function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.data[_vm.type][i],
+                        "fluency",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    },
+                    function($event) {
+                      _vm.updateLang(_vm.data[_vm.type][i], i)
+                    }
+                  ]
                 }
               },
               _vm._l(_vm.levels[_vm.type], function(fluency, i) {
@@ -48759,7 +48804,7 @@ var render = function() {
                 on: {
                   click: function($event) {
                     $event.preventDefault()
-                    _vm.addNew("knows")
+                    _vm.addNew(_vm.type)
                   }
                 }
               },
@@ -48774,7 +48819,7 @@ var render = function() {
                 on: {
                   click: function($event) {
                     $event.preventDefault()
-                    _vm.remove(i, "knows")
+                    _vm.remove(i, _vm.type)
                   }
                 }
               },

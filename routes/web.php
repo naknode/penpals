@@ -28,6 +28,7 @@ Route::post('/register/photo', 'UserController@wizardPhoto')->name('post.registe
 Route::view('/register/profile', 'layouts.wizard.profile')->middleware('auth')->name('view.register.profile');
 Route::post('/register/profile', 'UserController@wizardProfile')->name('post.register.profile');
 Route::post('/language/add', 'LanguagesController@store')->middleware('auth')->name('languages.add');
+Route::post('/language/{languages}/update', 'LanguagesController@update')->middleware('auth')->name('languages.update');
 // Confirm
 Route::get('register/confirm', 'Auth\RegisterConfirmController@index')->name('register.confirm');
 
@@ -38,3 +39,6 @@ Route::get('/dashboard', 'DashboardController@view')->name('view.dashboard');
 Route::post('/api/{user}/avatar', 'UserController@storeAvatar')->middleware('auth')->name('avatar');
 
 Route::get('/{user}', 'ProfileController@show')->name('view.profile');
+
+// Languages
+Route::get('/{user}/languages/{type}', 'UserController@languages')->name('languages.user.get');

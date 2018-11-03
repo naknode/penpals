@@ -14,6 +14,16 @@ class Languages extends Model
     protected $guarded = [];
 
     /**
+     * Get the route key name for Laravel.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
+
+    /**
      * A thread belongs to a creator.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

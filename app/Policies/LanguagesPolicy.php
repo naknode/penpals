@@ -30,7 +30,7 @@ class LanguagesPolicy
      */
     public function update(User $user, Languages $languages)
     {
-        return $user->id !== $languages->user->id;
+        return $user->id === $languages->user->id;
     }
 
     /**

@@ -16,12 +16,12 @@ class CreateLanguagesTable extends Migration
         Schema::create('languages', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('language');
+            $table->string('language_name');
             $table->enum('fluency', ['beginner', 'intermediate', 'advanced', 'fluent', 'native', 'conversational', 'working fluency', 'professional fluency']);
             $table->enum('type', ['learning', 'speaks']);
             $table->timestamps();
 
-            $table->unique(['user_id', 'language']);
+            $table->unique(['user_id', 'language_name', 'type']);
         });
     }
 

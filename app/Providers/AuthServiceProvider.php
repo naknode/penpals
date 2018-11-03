@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Languages;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -14,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
-        Languages::class => LanguagesPolicy::class,
+        'App\Languages' => 'App\Policies\LanguagesPolicy',
     ];
 
     /**

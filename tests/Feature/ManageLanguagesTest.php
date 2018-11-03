@@ -15,7 +15,7 @@ class ManageLanguagesTest extends TestCase
         $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
-            'language' => 'English',
+            'language_name' => 'English',
             'fluency' => 'native',
             'type' => 'learning',
             'user_id' => auth()->id(),
@@ -25,13 +25,78 @@ class ManageLanguagesTest extends TestCase
     }
 
     /** @test */
+    public function authorized_user_can_edit_a_language()
+    {
+        $this->signIn(factory('App\User')->create());
+
+        $newLanguage = [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => 1,
+        ];
+
+        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+
+        $updatedLanguage = [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => auth()->id(),
+            'id' => 1,
+        ];
+
+        $this->post(route('languages.update', ['id' => 1]), $updatedLanguage)->assertStatus(200);
+        $this->assertDatabaseHas('languages', [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => 1,
+            'id' => 1,
+        ]);
+    }
+
+    /** @test */
+    public function a_user_can_fetch_their_languages()
+    {
+        // Given that we have a user
+        $this->signIn(factory('App\User')->create());
+
+        // Who has chosen he is a Native English learner
+        $newLanguage = [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => auth()->id(),
+        ];
+
+        // We add it to database
+        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+
+        // And then fetch it from a 3rd-party plugin
+        $response = $this->get(route('languages.user.get', [
+                'user' => auth()->user(),
+                'type' => 'learning',
+            ]))
+            ->assertStatus(200);
+
+        // We get that result back successfully
+        $response->assertSeeInOrder([
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => auth()->id(),
+        ]);
+    }
+
+    /** @test */
     public function unauthorized_user_cannot_add_a_language()
     {
         $this->withExceptionHandling();
         $this->signIn(factory('App\User')->states('robot')->create());
 
         $newLanguage = [
-            'language' => 'English',
+            'language_name' => 'English',
             'fluency' => 'native',
             'type' => 'learning',
             'user_id' => auth()->id(),
@@ -49,7 +114,7 @@ class ManageLanguagesTest extends TestCase
         $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
-            'language' => 'English',
+            'language_name' => 'English',
             'fluency' => 'ERROR',
             'type' => 'learning',
             'user_id' => auth()->id(),
@@ -66,13 +131,13 @@ class ManageLanguagesTest extends TestCase
         $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
-            'language' => '',
+            'language_name' => '',
             'fluency' => 'native',
             'type' => 'learning',
             'user_id' => auth()->id(),
         ];
 
-        $this->post(route('languages.add', $newLanguage))->assertSessionHasErrors('language');
+        $this->post(route('languages.add', $newLanguage))->assertSessionHasErrors('language_name');
         $this->assertCount(0, auth()->user()->languages);
     }
 
@@ -83,7 +148,7 @@ class ManageLanguagesTest extends TestCase
         $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
-            'language' => 'English',
+            'language_name' => 'English',
             'fluency' => 'native',
             'type' => '',
             'user_id' => auth()->id(),
@@ -100,7 +165,7 @@ class ManageLanguagesTest extends TestCase
         $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
-            'language' => 'English',
+            'language_name' => 'English',
             'fluency' => 'native',
             'type' => 'milk',
             'user_id' => auth()->id(),

@@ -17,6 +17,16 @@ class LanguagesController extends Controller
         $this->middleware('auth');
     }
 
+    public function update(Languages $languages)
+    {
+        $this->authorize('update', $languages);
+
+        $getLanguage = \App\Languages::find(request('id'));
+        $getLanguage->fluency = request('fluency');
+        $getLanguage->language_name = request('language_name');
+        $getLanguage->save();
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -29,17 +39,19 @@ class LanguagesController extends Controller
         }
 
         request()->validate([
-            'language' => 'required',
+            'language_name' => 'required',
             'fluency' => 'required|in:beginner,intermediate,advanced,fluent,native,conversational,working fluency,professional fluency',
             'type' => 'required|in:learning,speaks',
             'user_id' => 'required',
         ]);
 
         $added = Languages::create([
-            'language' => request('language'),
+            'language_name' => request('language_name'),
             'fluency' => request('fluency'),
             'type' => request('type'),
             'user_id' => request('user_id'),
         ]);
+
+        return $added->id;
     }
 }
