@@ -27,7 +27,7 @@ Route::post('/register/photo', 'UserController@wizardPhoto')->name('post.registe
 // 3.
 Route::view('/register/profile', 'layouts.wizard.profile')->middleware('auth')->name('view.register.profile');
 Route::post('/register/profile', 'UserController@wizardProfile')->name('post.register.profile');
-
+Route::post('/language/add', 'LanguagesController@store')->middleware('auth')->name('languages.add');
 // Confirm
 Route::get('register/confirm', 'Auth\RegisterConfirmController@index')->name('register.confirm');
 

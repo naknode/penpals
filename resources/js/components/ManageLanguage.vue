@@ -14,13 +14,14 @@
           </option>
         </select>
         <select
-          v-model="knows[i].level"
+          v-model="knows[i].fluency"
           :name="`${type}_fluency[${i}]`"
           class="el form-control mr-2"
+          :onChange="updateLang(knows[i])"
           placeholder="Fluency Level"
           label="countryName">
-          <option v-for="(level, i) in levels[type]" v-bind:key="i" v-bind:value="level">
-            {{ level }}
+          <option v-for="(fluency, i) in levels[type]" v-bind:key="i" v-bind:value="fluency">
+            {{ fluency }}
           </option>
         </select>
         <button @click.prevent="addNew('knows')" class="el btn btn-secondary add">
@@ -38,10 +39,30 @@
 export default {
   props: ['type'],
   methods: {
+    updateLang(data) {
+      const {language, fluency} = data;
+
+      if (fluency !== "") {
+        axios.post('/language/add', {
+          language,
+          fluency,
+          type: 'speaks',
+          user_id: window.App.user.id
+        })
+        .then(e => {
+          console.log(e.status);
+        })
+        .catch(error => {
+          if (error.response.status === 403) {
+            this.$awn.alert(error.response.data.message)
+          }
+        });
+      }
+    },
     addNew(type) {
       const block = {
         language: '',
-        level: ''
+        fluency: ''
       };
       if (type === 'knows') {
         this.knows.push(block);
@@ -62,7 +83,7 @@ export default {
   data() {
     return {
       languageType: this.type,
-      knows: [{language: 'English', level: ''}],
+      knows: [{language: 'English', fluency: ''}],
       learning: [],
       levels: {
         'speaks': ['beginner', 'intermediate', 'advanced', 'fluent', 'native'],
@@ -148,6 +169,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 .hello {
   text-align: left;
 }

@@ -32,13 +32,13 @@
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <wizard-add-language type="learning" />
+                                <manage-language type="learning" />
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <wizard-add-language type="speaks" />
+                                <manage-language type="speaks" />
                             </div>
                         </div>
 

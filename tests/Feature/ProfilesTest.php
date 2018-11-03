@@ -18,4 +18,13 @@ class ProfilesTest extends TestCase
 
         $this->assertEquals($response['profileUser']['name'], $user->name);
     }
+
+    /** @test */
+    public function a_user_can_view_their_profile()
+    {
+        $this->signIn();
+
+        $this->get('/' . auth()->user()->username)
+            ->assertStatus(200);
+    }
 }

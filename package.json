@@ -21,6 +21,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
-        "laravel-mix-tailwind": "^0.1.0"
+        "laravel-mix-tailwind": "^0.1.0",
+        "vue-awesome-notifications": "^2.2.9"
     }
 }

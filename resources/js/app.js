@@ -8,16 +8,13 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import VueAWN from "vue-awesome-notifications"
+require("vue-awesome-notifications/dist/styles/style.css")
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
+Vue.use(VueAWN)
 Vue.component('registration-wizard', require('./components/RegistrationWizard.vue'));
 Vue.component('user-avatar', require('./components/UserAvatar.vue'));
-Vue.component('wizard-add-language', require('./components/wizard/AddLanguageSkills.vue'));
+Vue.component('manage-language', require('./components/ManageLanguage.vue'));
 Vue.component('lindua-icon', require('./components/utils/LinduaIcon.vue'));
 
 const app = new Vue({
