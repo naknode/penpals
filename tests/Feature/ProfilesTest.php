@@ -24,7 +24,7 @@ class ProfilesTest extends TestCase
     {
         $this->signIn();
 
-        $this->get('/' . auth()->user()->username)
+        $this->get('/'.auth()->user()->username)
             ->assertStatus(200);
     }
 }
