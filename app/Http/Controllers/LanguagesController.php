@@ -17,6 +17,19 @@ class LanguagesController extends Controller
         $this->middleware('auth');
     }
 
+    public function destroy(Languages $languages)
+    {
+        $this->authorize('update', $languages);
+
+        $languages->delete();
+
+        if (request()->expectsJson()) {
+            return response(['status' => 'Language deleted']);
+        }
+
+        return response(200);
+    }
+
     public function update(Languages $languages)
     {
         $this->authorize('update', $languages);

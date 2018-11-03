@@ -29,6 +29,7 @@ Route::view('/register/profile', 'layouts.wizard.profile')->middleware('auth')->
 Route::post('/register/profile', 'UserController@wizardProfile')->name('post.register.profile');
 Route::post('/language/add', 'LanguagesController@store')->middleware('auth')->name('languages.add');
 Route::post('/language/{languages}/update', 'LanguagesController@update')->middleware('auth')->name('languages.update');
+Route::delete('/language/{languages}/destroy', 'LanguagesController@destroy')->middleware('auth')->name('languages.delete');
 // Confirm
 Route::get('register/confirm', 'Auth\RegisterConfirmController@index')->name('register.confirm');
 

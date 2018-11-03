@@ -174,4 +174,50 @@ class ManageLanguagesTest extends TestCase
         $this->post(route('languages.add', $newLanguage))->assertSessionHasErrors('type');
         $this->assertCount(0, auth()->user()->languages);
     }
+
+    /** @test */
+    public function a_user_can_delete_a_saved_language()
+    {
+        $this->signIn(factory('App\User')->create());
+
+        $newLanguage = [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => auth()->id(),
+        ];
+
+        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+        $this->assertCount(1, auth()->user()->languages);
+
+        $this->delete(route('languages.delete', ['id' => 1]))->assertStatus(200);
+
+        $this->assertDatabaseMissing('languages', ['id' => 1]);
+        $this->assertEquals(0, auth()->user()->fresh()->languages->count());
+    }
+
+    /** @test */
+    public function unauthorized_user_cannot_delete_someone_elses_saved_language()
+    {
+        $this->withExceptionHandling();
+        $john = factory('App\User')->create();
+        $this->signIn($john);
+
+        $newLanguage = [
+            'language_name' => 'English',
+            'fluency' => 'native',
+            'type' => 'learning',
+            'user_id' => auth()->id(),
+        ];
+
+        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+        $this->assertCount(1, auth()->user()->languages);
+
+        $this->signIn(factory('App\User')->create());
+
+        $this->delete(route('languages.delete', ['id' => 1]))->assertStatus(403);
+
+        $this->assertDatabaseHas('languages', ['id' => 1]);
+        $this->assertEquals(1, $john->languages->count());
+    }
 }
