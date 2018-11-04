@@ -15,8 +15,6 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // Registration Wizard
 // 1.
 Route::view('/register/robot', 'layouts.wizard.robot')->middleware('auth')->name('view.register.robot');
