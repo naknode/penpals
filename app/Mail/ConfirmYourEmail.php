@@ -28,6 +28,7 @@ class ConfirmYourEmail extends Mailable
     }
 
     /**
+     * @codeCoverageIgnore
      * Build the message.
      *
      * @return $this
