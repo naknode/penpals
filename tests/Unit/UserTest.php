@@ -20,4 +20,15 @@ class UserTest extends TestCase
 
         $this->assertEquals(asset('avatars/me.jpg'), $user->avatar_path);
     }
+
+    /** @test */
+    public function a_user_gets_redirect_to_dashboard_if_they_try_to_login()
+    {
+        $user = create(\App\User::class);
+        $this->signin($user);
+
+        $this->get(route('login'))
+            ->assertStatus(302)
+            ->assertRedirect(route('view.dashboard'));
+    }
 }
