@@ -73,11 +73,17 @@ class RegisterUserTest extends TestCase
     /** @test */
     public function a_user_needs_to_confirm_their_humanlyness()
     {
-        $this->withExceptionHandling()->signIn();
+        $this->withExceptionHandling()
+            ->signIn(factory('App\User')
+            ->states('robot')
+            ->create());
+
+        $this->assertTrue(auth()->user()->fresh()->robot);
 
         unset(app()[Recaptcha::class]);
 
         $this->post('/register/robot', ['g-recaptcha-response' => 'test'])->assertSessionHasErrors();
+        $this->assertTrue(auth()->user()->fresh()->robot);
     }
 
     /** @test */
@@ -137,22 +143,6 @@ class RegisterUserTest extends TestCase
             $this->assertTrue($user->confirmed);
             $this->assertNull($user->confirmation_token);
         });
-    }
-
-    /** @test */
-    public function a_user_can_upload_their_profile_photo()
-    {
-        $this->signIn();
-
-        Storage::fake('public');
-
-        $this->json('POST', route('avatar', auth()->id()), [
-            'avatar' => $file = UploadedFile::fake()->image('avatar.png'),
-        ]);
-
-        $this->assertEquals(asset('avatars/'.$file->hashName()), auth()->user()->avatar_path);
-
-        Storage::disk('public')->assertExists('avatars/'.$file->hashName());
     }
 
     /** @test */
