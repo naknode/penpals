@@ -128,7 +128,6 @@ class RegisterUserTest extends TestCase
         $user = User::whereEmail('john@doe.com')->first();
 
         $this->assertFalse($user->confirmed);
-        $this->assertTrue($user->robot);
         $this->assertNotNull($user->confirmation_token);
 
         $this->get(route('register.confirm', ['token' => $user->confirmation_token]))
