@@ -57,6 +57,9 @@ export default {
   methods: {
     /**
      * Update the language
+     *
+     * @param {object} data The object of the language
+     * @param {integer} index The index in their place
      */
     updateLang(data, index) {
       const { language_name, fluency, id } = data;
@@ -100,6 +103,11 @@ export default {
         }
       }
     },
+    /**
+     * Add a new language block
+     *
+     * @param {string} type The type of language
+     */
     addNew(type) {
       const block = {
         language_name: '',
@@ -108,26 +116,43 @@ export default {
 
       this.data[this.type].push(block);
     },
-    remove(index, type) {
+    /**
+     * Delete the language
+     *
+     * @param {integer} id The ID of the language resource
+     * @returns {promise}
+     */
+    deleteLanguage(id) {
+      return new Promise(resolve => {
+        axios.delete('/language/' + id + '/destroy', {
+          id,
+        })
+        .then(e => {
+          if (e.status === 200) {
+            resolve(id);
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 403) {
+            this.$awn.alert(error.response.data.message);
+          }
+        });
+      })
+    },
+    /**
+     * Remove the language from the list
+     *
+     * @param {integer} index The index item in the list
+     * @param {string} type The type of language
+     */
+    async remove(index, type) {
       if (index === 0) return;
 
       if (this.data[this.type][index].id) {
-          axios.delete('/language/' + this.data[this.type][index].id + '/destroy', {
-            id: this.data[this.type][index].id,
-          })
-          .then(e => {
-            if (e.status === 200) {
-              this.data[this.type].splice(index, 1);
-            }
-          })
-          .catch(error => {
-            if (error.response.status === 403) {
-              this.$awn.alert(error.response.data.message);
-            }
-          });
-        } else {
-          this.data[this.type].splice(index, 1);
-        }
+        await this.deleteLanguage(this.data[this.type][index].id)
+      }
+
+      this.data[this.type].splice(index, 1);
     },
   },
   data() {
