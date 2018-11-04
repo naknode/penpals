@@ -125,7 +125,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Check to see where the user is still a robot
+     * Check to see where the user is still a robot.
      */
     public function isRobot()
     {
