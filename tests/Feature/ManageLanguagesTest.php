@@ -9,11 +9,16 @@ class ManageLanguagesTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->signIn();
+    }
+
     /** @test */
     public function authorized_user_can_add_a_language()
     {
-        $this->signIn(factory('App\User')->create());
-
         $newLanguage = [
             'language_name' => 'English',
             'fluency' => 'native',
@@ -27,8 +32,6 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function authorized_user_can_edit_a_language()
     {
-        $this->signIn(factory('App\User')->create());
-
         $newLanguage = [
             'language_name' => 'English',
             'fluency' => 'native',
@@ -59,9 +62,6 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function a_user_can_fetch_their_languages()
     {
-        // Given that we have a user
-        $this->signIn(factory('App\User')->create());
-
         // Who has chosen he is a Native English learner
         $newLanguage = [
             'language_name' => 'English',
@@ -87,24 +87,6 @@ class ManageLanguagesTest extends TestCase
             'type' => 'learning',
             'user_id' => auth()->id(),
         ]);
-    }
-
-    /** @test */
-    public function unauthorized_user_cannot_add_a_language()
-    {
-        $this->withExceptionHandling();
-        $this->signIn(factory('App\User')->states('robot')->create());
-
-        $newLanguage = [
-            'language_name' => 'English',
-            'fluency' => 'native',
-            'type' => 'learning',
-            'user_id' => auth()->id(),
-        ];
-
-        $this->post(route('languages.add', $newLanguage))->assertStatus(403);
-
-        $this->assertCount(0, auth()->user()->languages);
     }
 
     /** @test */
@@ -145,7 +127,6 @@ class ManageLanguagesTest extends TestCase
     public function user_cannot_add_a_language_with_no_type_selected()
     {
         $this->withExceptionHandling();
-        $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
             'language_name' => 'English',
@@ -162,7 +143,6 @@ class ManageLanguagesTest extends TestCase
     public function user_cannot_add_a_language_with_an_invalid_type_selected()
     {
         $this->withExceptionHandling();
-        $this->signIn(factory('App\User')->create());
 
         $newLanguage = [
             'language_name' => 'English',
@@ -178,8 +158,6 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function a_user_can_delete_a_saved_language()
     {
-        $this->signIn(factory('App\User')->create());
-
         $newLanguage = [
             'language_name' => 'English',
             'fluency' => 'native',

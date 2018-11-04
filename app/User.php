@@ -125,6 +125,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Check to see where the user is still a robot
+     */
+    public function isRobot()
+    {
+        return $this->robot === true;
+    }
+
+    /**
      * A user knows or speaks many languages.
      */
     public function languages()

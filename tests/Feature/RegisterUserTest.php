@@ -156,6 +156,16 @@ class RegisterUserTest extends TestCase
     }
 
     /** @test */
+    public function must_confirm_humanlyness_before_going_anywhere_else()
+    {
+        $this->signIn(factory('App\User')->states('robot')->create());
+
+        $this->get(route('view.dashboard'))
+            ->assertStatus(302)
+            ->assertRedirect(route('view.register.robot'));
+    }
+
+    /** @test */
     public function a_user_can_fill_out_their_biography()
     {
         $this->signIn();
