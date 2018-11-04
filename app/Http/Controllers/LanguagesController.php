@@ -23,10 +23,6 @@ class LanguagesController extends Controller
 
         $languages->delete();
 
-        if (request()->expectsJson()) {
-            return response(['status' => 'Language deleted']);
-        }
-
         return response(200);
     }
 
