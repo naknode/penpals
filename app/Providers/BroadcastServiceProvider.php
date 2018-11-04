@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Broadcast;
 class BroadcastServiceProvider extends ServiceProvider
 {
     /**
+     * codeCoverageIgnore
      * Bootstrap any application services.
      *
      * @return void
