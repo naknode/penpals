@@ -20,7 +20,7 @@ class ForgotPassTest extends TestCase
     /** @test */
     public function a_user_can_see_see_their_forgot_pass_page()
     {
-        $response = $this->get(route('password.request'))
+        $this->get(route('password.request'))
             ->assertStatus(200)
             ->assertSee('Reset Password');
     }
@@ -33,5 +33,11 @@ class ForgotPassTest extends TestCase
         $this->post(route('password.email'), ['email' => $user->email])
             ->assertStatus(302)
             ->assertSessionHas('status', __('passwords.sent'));
+
+        $response = \DB::table('password_resets')->first();
+
+        $this->get(route('password.reset', urlencode($response->token)))
+            ->assertStatus(200)
+            ->assertSee('Reset Password');
     }
 }
