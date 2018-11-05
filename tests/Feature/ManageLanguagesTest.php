@@ -32,26 +32,24 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function authorized_user_can_edit_a_language()
     {
-        $newLanguage = [
-            'language_name' => 'English',
-            'fluency' => 'native',
+        $language = create(\App\Languages::class, [
+            'fluency' => 'conversational',
+            'language_name' => 'Chinese',
             'type' => 'learning',
             'user_id' => 1,
-        ];
-
-        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+        ]);
 
         $updatedLanguage = [
-            'language_name' => 'English',
             'fluency' => 'native',
-            'type' => 'learning',
-            'user_id' => auth()->id(),
-            'id' => 1,
+            'language_name' => 'Chinese',
+            'id' => $language->id,
         ];
 
-        $this->post(route('languages.update', ['id' => 1]), $updatedLanguage)->assertStatus(200);
+        $this->post(route('languages.update', ['id' => $language->id]), $updatedLanguage)
+            ->assertStatus(200);
+
         $this->assertDatabaseHas('languages', [
-            'language_name' => 'English',
+            'language_name' => 'Chinese',
             'fluency' => 'native',
             'type' => 'learning',
             'user_id' => 1,
@@ -62,20 +60,17 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function a_user_can_fetch_their_languages()
     {
-        // Who has chosen he is a Native English learner
-        $newLanguage = [
-            'language_name' => 'English',
+        // We create a langauge attached to a user
+        $language = create(\App\Languages::class, [
             'fluency' => 'native',
+            'language_name' => 'English',
             'type' => 'learning',
-            'user_id' => auth()->id(),
-        ];
-
-        // We add it to database
-        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
+            'user_id' => 1,
+        ]);
 
         // And then fetch it from a 3rd-party plugin
         $response = $this->get(route('languages.user.get', [
-                'user' => auth()->user(),
+                'user' => $language->user,
                 'type' => 'learning',
             ]))
             ->assertStatus(200);
@@ -85,7 +80,7 @@ class ManageLanguagesTest extends TestCase
             'language_name' => 'English',
             'fluency' => 'native',
             'type' => 'learning',
-            'user_id' => auth()->id(),
+            'user_id' => 1,
         ]);
     }
 
@@ -158,15 +153,12 @@ class ManageLanguagesTest extends TestCase
     /** @test */
     public function a_user_can_delete_a_saved_language()
     {
-        $newLanguage = [
-            'language_name' => 'English',
+        $language = create(\App\Languages::class, [
             'fluency' => 'native',
+            'language_name' => 'English',
             'type' => 'learning',
-            'user_id' => auth()->id(),
-        ];
-
-        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
-        $this->assertCount(1, auth()->user()->languages);
+            'user_id' => 1,
+        ]);
 
         $this->delete(route('languages.delete', ['id' => 1]))->assertStatus(200);
 
@@ -178,24 +170,18 @@ class ManageLanguagesTest extends TestCase
     public function unauthorized_user_cannot_delete_someone_elses_saved_language()
     {
         $this->withExceptionHandling();
-        $john = factory('App\User')->create();
-        $this->signIn($john);
 
-        $newLanguage = [
-            'language_name' => 'English',
+        $language = create(\App\Languages::class, [
             'fluency' => 'native',
+            'language_name' => 'English',
             'type' => 'learning',
-            'user_id' => auth()->id(),
-        ];
-
-        $this->post(route('languages.add', $newLanguage))->assertStatus(200);
-        $this->assertCount(1, auth()->user()->languages);
+        ]);
 
         $this->signIn(factory('App\User')->create());
 
         $this->delete(route('languages.delete', ['id' => 1]))->assertStatus(403);
 
         $this->assertDatabaseHas('languages', ['id' => 1]);
-        $this->assertEquals(1, $john->languages->count());
+        $this->assertCount(1, $language->user->languages);
     }
 }
