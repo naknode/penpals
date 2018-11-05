@@ -43,10 +43,6 @@ class LanguagesController extends Controller
      */
     public function store()
     {
-        if (auth()->user()->robot) {
-            return response('Not allowed.', 403);
-        }
-
         request()->validate([
             'language_name' => 'required',
             'fluency' => 'required|in:beginner,intermediate,advanced,fluent,native,conversational,working fluency,professional fluency',
