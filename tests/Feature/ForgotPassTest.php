@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -30,14 +31,15 @@ class ForgotPassTest extends TestCase
     {
         $user = factory('App\User')->create();
 
-        $this->post(route('password.email'), ['email' => $user->email])
-            ->assertStatus(302)
-            ->assertSessionHas('status', __('passwords.sent'));
+        $token = str_random(60);
 
-        $response = \DB::table('password_resets')->first();
+        \DB::table('password_resets')->insert([
+            'email' => $user->email,
+            'token' => $token,
+            'created_at' => Carbon::now(),
+        ]);
 
-        $this->get(route('password.reset', urlencode($response->token)))
-            ->assertStatus(200)
-            ->assertSee('Reset Password');
+        $this->get("/password/reset/{$token}")
+            ->assertStatus(200);
     }
 }
