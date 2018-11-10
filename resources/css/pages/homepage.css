@@ -1,0 +1,21 @@
+/** Hero **/
+.hero-bg {
+  background: #00d2ff;
+  background: linear-gradient(to top, #3a7bd5, #00d2ff);
+}
+
+.hero-bg h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/** Subtext **/
+.subtext {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/** Features **/
+div.features h2 {
+  font-weight: 700;
+  color: #4b5154;
+  font-family: 'Open Sans Condensed', sans-serif;
+}

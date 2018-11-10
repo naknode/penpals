@@ -3,11 +3,20 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600");
 
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+ @tailwind components;
+
 // Variables
 @import "variables";
 
-// Bootstrap
-@import url("theme/bootstrap4-bubblegum.min.css");
+// // Tailwind Library
+@import "website_tailwind";
 
 @tailwind utilities;
 
@@ -15,7 +24,6 @@
     outline: none;
 }
 
-// @import '~bootstrap/scss/bootstrap';
 footer {
     color: #636b6f;
 }
@@ -39,19 +47,19 @@ body {
     }
 }
 
-.wizard {
-    .title {
-        font-family: 'Nunito', sans-serif;
-        color: #4a4a4a;
-    }
-    .avatar-form {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
+// .wizard {
+//     .title {
+//         font-family: 'Nunito', sans-serif;
+//         color: #4a4a4a;
+//     }
+//     .avatar-form {
+//         display: inline-flex;
+//         flex-direction: column;
+//         align-items: center;
 
-        .user-avatar {
-            height: 150px;
-            border-radius: 50%;
-        }
-    }
-}
+//         .user-avatar {
+//             height: 150px;
+//             border-radius: 50%;
+//         }
+//     }
+// }
