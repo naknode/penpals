@@ -1,7 +1,11 @@
 .btn {
-  @apply inline-block align-middle text-center select-none border font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline my-3
+  @apply font-bold py-2 text-xs px-4 rounded select-none whitespace-no-wrap my-3 no-underline;
 }
 
 .btn-primary {
-  @apply bg-yellow
+  @apply bg-yellow text-yellow-darker
+}
+
+h2 {
+  @apply text-xl;
 }

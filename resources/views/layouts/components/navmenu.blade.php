@@ -2,13 +2,13 @@
   <div class="container mx-auto h-full">
       <div class="flex items-center justify-center h-12">
           <div class="mr-6">
-              <a href="{{ url('/') }}" class="text-lg font-hairline text-teal-darker no-underline hover:underline">
+              <a href="{{ url('/') }}" class="text-lg font-bold font-hairline text-teal-darker no-underline hover:underline">
                   {{ config('app.name', 'Laravel') }}
               </a>
           </div>
           <div class="flex-1 text-right">
               @guest
-                  <a class="no-underline hover:underline text-teal-darker pr-3 text-sm" href="{{ url('/login') }}">{{ __('Login') }}</a>
+                  <a class="no-underline bg-transparent hover:bg-blue text-blue-dark font-semibold hover:text-white py-2 px-4 border border-blue hover:border-transparent rounded mr-4 text-teal-darker pr-3 text-sm" href="{{ url('/login') }}">{{ __('Login') }}</a>
                   <a class="no-underline hover:underline text-teal-darker text-sm" href="{{ url('/register') }}">{{ __('Register') }}</a>
               @else
                   <span class="text-teal-darker text-sm pr-4">{{ Auth::user()->name }}</span>

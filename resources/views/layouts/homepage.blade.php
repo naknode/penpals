@@ -7,11 +7,11 @@
 		<h1 class="md:text-5xl text-white font-black text-2xl">
             Old fashioned friendships for the digital age.
         </h1>
-		<p class="subtext text-white my-5 text-3xl">
+		<p class="subtext text-white my-5 text-2xl leading-tight md:text-3xl md:leading-none">
             Exchange cultures. Learn languages. Create friendships.
         </p>
 		<p>
-			<a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark" href="#" role="button">Get Started</a>
+			<a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark md:text-base" href="#" role="button">Get Started</a>
 		</p>
 	</div>
 </div>
