@@ -19,3 +19,61 @@ div.features h2 {
   color: #4b5154;
   font-family: 'Open Sans Condensed', sans-serif;
 }
+
+/** Icons **/
+.homepage-icon {
+  display: inline-flex;
+  padding: .4em;
+  border-radius: 50%;
+  background-color: #008DF5;
+  @apply mr-3
+}
+
+.homepage-icon.key {
+  @apply bg-yellow-dark
+}
+
+.homepage-icon.key svg {
+  @apply fill-current text-yellow-darker;
+}
+
+.homepage-icon.code {
+  @apply bg-orange-light
+}
+
+.homepage-icon.code svg {
+  @apply fill-current text-orange-darker;
+}
+
+.homepage-icon.road {
+  @apply bg-blue-light
+}
+
+.homepage-icon.road svg {
+  @apply fill-current text-blue-darker;
+}
+
+.homepage-icon.photo-album {
+  @apply bg-green-light
+}
+
+.homepage-icon.photo-album svg {
+  @apply fill-current text-green-darker;
+}
+
+.homepage-icon.lock {
+  @apply bg-grey-light
+}
+
+.homepage-icon.lock svg {
+  @apply fill-current text-grey-darker;
+}
+
+
+.homepage-icon.bubble-question {
+  @apply bg-red-light
+}
+
+.homepage-icon.bubble-question svg {
+  @apply fill-current text-red-darker;
+}

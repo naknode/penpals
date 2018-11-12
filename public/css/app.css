@@ -23,6 +23,72 @@ div.features h2 {
   color: #4b5154;
   font-family: 'Open Sans Condensed', sans-serif;
 }
+
+/** Icons **/
+
+.homepage-icon {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: .4em;
+  border-radius: 50%;
+  background-color: #008df5;
+  margin-right: .75rem;
+}
+
+.homepage-icon.key {
+  background-color: #f2d024;
+}
+
+.homepage-icon.key svg {
+  fill: currentColor;
+  color: #684f1d;
+}
+
+.homepage-icon.code {
+  background-color: #faad63;
+}
+
+.homepage-icon.code svg {
+  fill: currentColor;
+  color: #613b1f;
+}
+
+.homepage-icon.road {
+  background-color: #6cb2eb;
+}
+
+.homepage-icon.road svg {
+  fill: currentColor;
+  color: #1c3d5a;
+}
+
+.homepage-icon.photo-album {
+  background-color: #51d88a;
+}
+
+.homepage-icon.photo-album svg {
+  fill: currentColor;
+  color: #1a4731;
+}
+
+.homepage-icon.lock {
+  background-color: #dae1e7;
+}
+
+.homepage-icon.lock svg {
+  fill: currentColor;
+  color: #606f7b;
+}
+
+.homepage-icon.bubble-question {
+  background-color: #ef5753;
+}
+
+.homepage-icon.bubble-question svg {
+  fill: currentColor;
+  color: #621b18;
+}
 .btn {
   display: inline-block;
   vertical-align: middle;
