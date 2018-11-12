@@ -1,16 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="py-8 px-4 bg-grey-lighter hero-bg rounded-none">
-  <h1 class="lg:w-1/2 md:text-5xl text-white font-black sm:text-2xl">
-      Next-generation internet penpal website for everyone.
-  </h1>
-  <p class="subtext text-white my-5 text-3xl lg:w-1/2">
-      Exchange cultures. Learn languages. Create friendships.
-  </p>
-  <p>
-      <a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark" href="#" role="button">Get Started</a>
-  </p>
+<div class="py-8 px-4 bg-grey-lighter hero-bg rounded-none flex items-center justify-center flex-row-reverse">
+    <img class="hidden md:block w-auto lg:w-1/2"  src="{{ asset('svg/hangout.svg')}}" alt="Hangout">
+    <div>
+        <h1 class="md:text-5xl text-white font-black text-2xl">
+            Old fashioned friendships for the digital age.
+        </h1>
+        <p class="subtext text-white my-5 text-3xl">
+            Exchange cultures. Learn languages. Create friendships.
+        </p>
+        <p>
+            <a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark" href="#" role="button">Get Started</a>
+        </p>
+    </div>
 </div>
 
 <div class="container mx-auto py-8">
