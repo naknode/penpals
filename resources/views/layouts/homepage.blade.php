@@ -8,22 +8,22 @@
             Old fashioned friendships for the digital age.
         </h1>
 		<p class="subtext text-white my-5 text-2xl leading-tight md:text-3xl md:leading-none">
-            Exchange cultures. Learn languages. Create friendships.
+            Exchange cultures. Learn languages. Create friendships. A million possibilities.
         </p>
 		<p>
-			<a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark md:text-base" href="#" role="button">Get Started</a>
+			<a href="{{ route('register') }}" class="btn btn-primary hover:bg-yellow-dark md:text-base" href="#" role="button">Find a Penpal</a>
 		</p>
 	</div>
 </div>
 
-<div class="container mx-auto py-8">
-    <div class="flex flex-wrap features">
+<div class="container mx-auto py-8 leading-tight">
+    <div class="flex flex-wrap features mb-5">
         <div class="md:w-1/3 pr-4 pl-4">
             <h2 class="flex items-center uppercase">
                 <span class="homepage-icon key">@svg('key', ['width' => '20', 'height' => '20'])</span>
                 Free and always.
             </h2>
-            <p class="my-3 text-justify text-grey-darker">We pride ourselves in never charging a dime for <em>all</em> of our wonderful features. No hidden fees; no cost. Find your penpals in less than a minute after!</p>
+            <p class="my-3 text-justify text-grey-darker">We pride ourselves in never charging for <em>all</em> of our wonderful features. No hidden fees; no cost. Find your penpals in less than a minute after sign-up.</p>
         </div>
         <div class="md:w-1/3 pr-4 pl-4">
             <h2 class="flex items-center uppercase">
@@ -53,7 +53,7 @@
                 <span class="homepage-icon lock">@svg('lock', ['width' => '20', 'height' => '20'])</span>
                 Privacy-locked.
             </h2>
-            <p class="my-3 text-justify text-grey-darker">Lock down your profile to very specific set of criteria. That way, you can only choose to interact with who you want to without hassle.</p>
+            <p class="my-3 text-justify text-grey-darker">Lock down your profile to a very specific set of criteria. That way you can only choose to interact with who you want to. No more hassle.</p>
         </div>
         <div class="md:w-1/3 pr-4 pl-4">
             <h2 class="flex items-center uppercase">

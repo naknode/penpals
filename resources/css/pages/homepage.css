@@ -10,14 +10,18 @@
 
 /** Subtext **/
 .subtext {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 /** Features **/
 div.features h2 {
   font-weight: 700;
   color: #4b5154;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Nunito', sans-serif;
+}
+
+div.features p {
+  font-family: 'Nunito', sans-serif;
 }
 
 /** Icons **/
