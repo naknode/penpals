@@ -29,7 +29,7 @@ class UserController extends Controller
     /**
      * Add the profile photo for the user.
      */
-    public function wizardPhoto()
+    public function wizardAvatar()
     {
         request()->validate([
             'avatar' => ['required', 'image'],
