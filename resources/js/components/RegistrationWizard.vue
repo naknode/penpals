@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      steps: ["Account", "Robot", "Photo", "Profile"]
+      steps: ["Account", "Robot", "Avatar", "Profile"]
     };
   },
   methods: {

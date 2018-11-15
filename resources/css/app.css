@@ -4,6 +4,8 @@
 
 /** My components. */
 @import "pages/homepage.css";
+@import "components/alerts.css";
+@import "components/typography.css";
 @import "components/buttons.css";
 
 /** Tailwind again */

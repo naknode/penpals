@@ -93,22 +93,60 @@ div.features p {
   fill: currentColor;
   color: #621b18;
 }
-.btn {
-  font-weight: 700;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  font-size: .75rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.alert {
+  position: relative;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  margin-bottom: 1rem;
   border-radius: .25rem;
+}
+
+.alert-success {
+  color: #1a4731;
+  background-color: #a2f5bf;
+}
+
+.alert-danger {
+  color: #621b18;
+  background-color: #f9acaa;
+}
+
+.alert-info {
+  color: #1c3d5a;
+  background-color: #bcdefa;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Nunito', Tahoma, Geneva, Verdana, sans-serif;
+  color: #606f7b;
+}
+.btn {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  font-weight: 700;
   white-space: nowrap;
-  margin-top: .75rem;
-  margin-bottom: .75rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 1.5;
   text-decoration: none;
+  color: #eff8ff;
+  outline: 0;
+  border-radius: .25rem !important;
 }
 
 .btn-primary {
@@ -116,8 +154,35 @@ div.features p {
   color: #684f1d;
 }
 
-h2 {
-  font-size: 1.25rem;
+.btn-secondary {
+  background-color: #3490dc;
+}
+
+.btn-link {
+  display: inline-block;
+  vertical-align: middle;
+  color: #22292f;
+  text-align: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-weight: 400;
+  white-space: nowrap;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: .25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-decoration: none;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
 }
 /** Tailwind */
 

@@ -20,8 +20,8 @@ Auth::routes();
 Route::view('/register/robot', 'layouts.wizard.robot')->middleware('auth')->name('view.register.robot');
 Route::post('/register/robot', 'UserController@tryBeingHuman')->name('post.register.robot');
 // 2.
-Route::view('/register/photo', 'layouts.wizard.photo')->middleware('auth')->name('view.register.photo');
-Route::post('/register/photo', 'UserController@wizardPhoto')->name('post.register.photo');
+Route::view('/register/avatar', 'layouts.wizard.avatar')->middleware('auth')->name('view.register.avatar');
+Route::post('/register/avatar', 'UserController@wizardAvatar')->name('post.register.avatar');
 // 3.
 Route::view('/register/profile', 'layouts.wizard.profile')->middleware('auth')->name('view.register.profile');
 Route::post('/register/profile', 'UserController@wizardProfile')->name('post.register.profile');

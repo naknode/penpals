@@ -1,0 +1,15 @@
+.alert {
+  @apply relative px-3 py-3 mb-4 rounded;
+}
+
+.alert-success {
+  @apply text-green-darker bg-green-lighter;
+}
+
+.alert-danger {
+  @apply text-red-darker bg-red-lighter;
+}
+
+.alert-info {
+  @apply text-blue-darker bg-blue-lighter;
+}

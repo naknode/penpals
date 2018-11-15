@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container wizard">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container mx-auto wizard">
+    <div class="flex flex-wrap justify-center">
+        <div class="md:w-2/3 pr-4 pl-4">
 
             <h1 class="mb-3 title">You're human, right?</h1>
             <registration-wizard :step="1"></registration-wizard>
@@ -20,28 +20,26 @@
                 </div>
             @endif
 
-            <div class="bg-grey-lighter rounded">
-                <div class="card-body">
+            <div class="bg-grey-lighter rounded mb-5">
+                <div class="flex-auto p-6">
                     <form method="POST" action="{{ route('post.register.robot') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right"></label>
-
-                            <div class="col-md-6">
+                        <div class="mb-4 flex flex-wrap">
+                            <div class="pr-4 pl-4 w-full flex justify-center">
                                 <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.key') }}"></div>
 
                                 @if ($errors->has('g-recaptcha-response'))
-                                    <span class="invalid-feedback">
+                                    <span class="hidden mt-1 text-sm text-red">
                                         <strong>{{ __('validation.recaptcha') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary rounded">
+                        <div class="flex flex-wrap mb-0">
+                            <div class="pr-4 pl-4 md:mx-1/3 flex justify-center w-full">
+                                <button type="submit" class="btn btn-secondary">
                                     Beep boop, I am human.
                                 </button>
                             </div>

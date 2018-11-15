@@ -23,7 +23,7 @@ class UserController extends Controller
 
         auth()->user()->confirmHumanlyness();
 
-        return redirect(route('view.register.photo'))->with(['message' => __('validation.wizard.success.robot')]);
+        return redirect(route('view.register.avatar'))->with(['message' => __('validation.wizard.success.robot')]);
     }
 
     /**
