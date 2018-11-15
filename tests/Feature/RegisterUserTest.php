@@ -61,7 +61,7 @@ class RegisterUserTest extends TestCase
 
         Storage::fake('public');
 
-        $this->json('POST', route('post.register.photo', auth()->id()), [
+        $this->json('POST', route('post.register.avatar', auth()->id()), [
           'avatar' => $file = UploadedFile::fake()->image('avatar.png'),
         ]);
 
