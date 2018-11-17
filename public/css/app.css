@@ -158,6 +158,22 @@ h6 {
   background-color: #3490dc;
 }
 
+.btn-secondary:hover {
+  background-color: #6cb2eb;
+}
+
+.btn-danger {
+  background-color: #e3342f;
+}
+
+.btn-danger[disabled] {
+  background-color: #f9acaa;
+}
+
+.btn-danger:hover:not[disabled] {
+  background-color: #ef5753;
+}
+
 .btn-link {
   display: inline-block;
   vertical-align: middle;
@@ -183,6 +199,24 @@ h6 {
 
 .btn-link:hover {
   text-decoration: underline;
+}
+select {
+  display: block;
+  width: 100%;
+  border-width: 1px;
+  border-color: #dae1e7;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  padding-right: 2rem;
+  border-radius: .25rem;
+  line-height: 1.25;
+}
+
+select:hover {
+  outline: 0;
+  border-color: #b8c2cc;
 }
 /** Tailwind */
 
@@ -840,6 +874,10 @@ table {
 }
 
 /** My components. */
+
+* {
+  outline: 0 !important;
+}
 
 /** Tailwind again */
 

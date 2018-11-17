@@ -7,6 +7,11 @@
 @import "components/alerts.css";
 @import "components/typography.css";
 @import "components/buttons.css";
+@import "components/dropdowns.css";
+
+* {
+  @apply outline-none !important;
+}
 
 /** Tailwind again */
 @tailwind utilities;

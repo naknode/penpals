@@ -6,7 +6,7 @@
         <select
           v-model="data[type][i].language_name"
           :name="`${type}_language[${i}]`"
-          class="el form-control mr-2"
+          class="mr-2"
           label="countryName">
           <option value="">Select Language</option>
           <option v-for="(language, i) in languages" v-bind:key="i" v-bind:value="language">
@@ -16,7 +16,7 @@
         <select
           v-model="data[type][i].fluency"
           :name="`${type}_fluency[${i}]`"
-          class="el form-control mr-2"
+          class="mr-2"
           v-on:change="updateLang(data[type][i], i)"
           placeholder="Fluency Level"
           label="countryName">
@@ -24,10 +24,10 @@
             {{ fluency }}
           </option>
         </select>
-        <button @click.prevent="addNew(type)" class="el btn btn-secondary add">
+        <button @click.prevent="addNew(type)" class="btn btn-secondary add">
           ADD
         </button>
-        <button :disabled="i === 0" class="el btn btn-danger del" @click.prevent="remove(i, type)">
+        <button :disabled="i === 0" class="btn btn-danger del" @click.prevent="remove(i, type)">
           DEL
         </button>
       </div>

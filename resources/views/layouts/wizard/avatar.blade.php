@@ -3,9 +3,9 @@
 @section('content')
 <div class="container mx-auto wizard">
     <div class="flex flex-wrap justify-center">
-        <div class="md:w-2/3 pr-4 pl-4">
+        <div class="md:w-2/3 px-4">
 
-            <h1 class="mb-3 title">Let's select your website avatar.</h1>
+            <h1 class="mb-3 title text-center lg:text-left">Let's select your website avatar.</h1>
             <registration-wizard :step="2"></registration-wizard>
 
             @if (session('message'))
@@ -33,12 +33,7 @@
                         <p class="text-center">Select an avatar to represent you.</p>
 
                         <div class="mb-4 flex flex-wrap">
-                            <label for="password-confirm" class="md:w-1/3 pr-4 pl-4 pt-2 pb-2 mb-0 leading-normal text-md-right"></label>
-
-                            <div class="md:w-1/2 pr-4 pl-4 avatar-form">
-                                <img src="{{ auth()->user()->avatar_path }}" alt="Avatar" class="user-avatar">
-                                <input type="file" name="avatar" class="mt-4" />
-                            </div>
+                            -- Avatar gallery --
                         </div>
 
                         <div class="mb-4 flex flex-wrap mb-0">

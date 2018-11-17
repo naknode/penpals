@@ -49570,7 +49570,7 @@ var render = function() {
                     expression: "data[type][i].language_name"
                   }
                 ],
-                staticClass: "el form-control mr-2",
+                staticClass: "mr-2",
                 attrs: {
                   name: _vm.type + "_language[" + i + "]",
                   label: "countryName"
@@ -49620,7 +49620,7 @@ var render = function() {
                     expression: "data[type][i].fluency"
                   }
                 ],
-                staticClass: "el form-control mr-2",
+                staticClass: "mr-2",
                 attrs: {
                   name: _vm.type + "_fluency[" + i + "]",
                   placeholder: "Fluency Level",
@@ -49661,7 +49661,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "el btn btn-secondary add",
+                staticClass: "btn btn-secondary add",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -49675,7 +49675,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "el btn btn-danger del",
+                staticClass: "btn btn-danger del",
                 attrs: { disabled: i === 0 },
                 on: {
                   click: function($event) {

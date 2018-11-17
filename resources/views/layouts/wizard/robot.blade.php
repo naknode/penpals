@@ -3,9 +3,9 @@
 @section('content')
 <div class="container mx-auto wizard">
     <div class="flex flex-wrap justify-center">
-        <div class="md:w-2/3 pr-4 pl-4">
+        <div class="md:w-2/3 sm:p-0">
 
-            <h1 class="mb-3 title">You're human, right?</h1>
+            <h1 class="mb-3 title text-center lg:text-left">You're human, right?</h1>
             <registration-wizard :step="1"></registration-wizard>
 
             @if (session('message'))
@@ -21,7 +21,7 @@
             @endif
 
             <div class="bg-grey-lighter rounded mb-5">
-                <div class="flex-auto p-6">
+                <div class="flex-auto py-5 px-0">
                     <form method="POST" action="{{ route('post.register.robot') }}">
                         @csrf
 

@@ -11,6 +11,22 @@
   @apply bg-blue;
 }
 
+.btn-secondary:hover {
+  @apply bg-blue-light;
+}
+
+.btn-danger {
+  @apply bg-red;
+}
+
+.btn-danger[disabled] {
+  @apply bg-red-lighter;
+}
+
+.btn-danger:hover:not[disabled] {
+  @apply bg-red-light;
+}
+
 .btn-link {
   @apply inline-block align-middle text-black text-center select-none font-normal whitespace-no-wrap py-2 px-4 rounded text-base leading-normal no-underline font-normal bg-transparent;
 }
